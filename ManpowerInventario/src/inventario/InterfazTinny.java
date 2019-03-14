@@ -85,6 +85,11 @@ public class InterfazTinny extends javax.swing.JInternalFrame {
         asignar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         asignar.setForeground(new java.awt.Color(102, 102, 102));
         asignar.setText("Asignar");
+        asignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignarActionPerformed(evt);
+            }
+        });
 
         limpiar.setBackground(new java.awt.Color(255, 255, 255));
         limpiar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -190,6 +195,10 @@ public class InterfazTinny extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asignarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
