@@ -72,7 +72,7 @@ control_existencias ctrl = new control_existencias();
         jDesktopPane1.setBackground(java.awt.Color.lightGray);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\garci\\Documents\\NetBeansProjects\\Nuevacarpeta\\ManpowerInventario\\ManpowerInventario\\src\\inventario\\imagenes\\manpower.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\agutierrezh\\Documents\\NetBeansProjects\\ManpowerInventario\\ManpowerInventario\\src\\inventario\\imagenes\\manpower.png")); // NOI18N
         jLabel2.setLabelFor(jDesktopPane1);
         jDesktopPane1.add(jLabel2);
         jLabel2.setBounds(0, 0, 910, 520);
@@ -140,7 +140,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem4.setText("Registrar");
-        jMenuItem4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem4.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -150,7 +150,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem1.setText("Buscar clientes");
-        jMenuItem1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem1.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuItem1.setMaximumSize(new java.awt.Dimension(22767, 22767));
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +195,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem3.setText("Registar");
-        jMenuItem3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem3.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -205,7 +205,7 @@ control_existencias ctrl = new control_existencias();
 
         Buscararticulos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Buscararticulos.setText("Lista de articulos");
-        Buscararticulos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Buscararticulos.setBorder(new javax.swing.border.SoftBevelBorder(0));
         Buscararticulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscararticulosActionPerformed(evt);
@@ -215,7 +215,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem6.setText("Actualizar stock");
-        jMenuItem6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem6.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -225,7 +225,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem8.setText("Devoluciones");
-        jMenuItem8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem8.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -242,7 +242,7 @@ control_existencias ctrl = new control_existencias();
 
         item_venta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         item_venta.setText("Nueva venta");
-        item_venta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        item_venta.setBorder(new javax.swing.border.SoftBevelBorder(0));
         item_venta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 item_ventaActionPerformed(evt);
@@ -259,7 +259,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem7.setText("Consulta facturas clientes");
-        jMenuItem7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem7.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -276,7 +276,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem2.setText("Registrar proveedor");
-        jMenuItem2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem2.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -286,7 +286,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem5.setText("Lista proveedores");
-        jMenuItem5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem5.setBorder(new javax.swing.border.SoftBevelBorder(0));
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
