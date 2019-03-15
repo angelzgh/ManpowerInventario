@@ -98,6 +98,11 @@ control_existencias ctrl = new control_existencias();
         Asignacion.add(Ax270);
 
         Atinny.setText("Tinny");
+        Atinny.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtinnyActionPerformed(evt);
+            }
+        });
         Asignacion.add(Atinny);
 
         Al470.setText("L470");
@@ -406,6 +411,12 @@ InterfazX270 IX270 = new InterfazX270();
     private void El450ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_El450ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_El450ActionPerformed
+
+    private void AtinnyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtinnyActionPerformed
+      InterfazTinny ITinny = new InterfazTinny();
+        jDesktopPane1.add(ITinny);
+        ITinny.show();   // TODO add your handling code here:
+    }//GEN-LAST:event_AtinnyActionPerformed
 
     /**
      * @param args the command line arguments
