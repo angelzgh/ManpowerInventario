@@ -360,7 +360,9 @@ control_existencias ctrl = new control_existencias();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void EsregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsregistrarActionPerformed
-        // TODO add your handling code here:
+InterfazEntrada ent = new InterfazEntrada();
+        jDesktopPane1.add(ent);
+        ent.show();         // TODO add your handling code here:
     }//GEN-LAST:event_EsregistrarActionPerformed
 
     private void El450ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_El450ActionPerformed
