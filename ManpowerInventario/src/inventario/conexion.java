@@ -14,7 +14,7 @@ public class conexion {
    
    
    
-   private final String url = "jdbc:mysql://localhost/facturacion";
+   private final String url = "jdbc:mysql://localhost/facturaci";
     PreparedStatement psPrepararSentencia;
     Connection con = null;
    
@@ -25,7 +25,7 @@ public class conexion {
          
          Class.forName("com.mysql.jdbc.Driver");
          
-         con = DriverManager.getConnection(url,"Angel","Manpower2019");
+         con = DriverManager.getConnection(url,"root","");
          if (con!=null){
             System.out.println("Conexión a base de datos facturacion. listo");
          }

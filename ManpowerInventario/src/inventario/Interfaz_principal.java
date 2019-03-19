@@ -34,13 +34,7 @@ control_existencias ctrl = new control_existencias();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Asignacion = new javax.swing.JMenu();
-        Al450 = new javax.swing.JMenuItem();
-        Ax270 = new javax.swing.JMenuItem();
-        Atinny = new javax.swing.JMenuItem();
-        Al470 = new javax.swing.JMenuItem();
-        Acpu = new javax.swing.JMenuItem();
         A13 = new javax.swing.JMenuItem();
-        Aarrendamiento = new javax.swing.JMenuItem();
         EnSal = new javax.swing.JMenu();
         Esregistrar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -68,6 +62,7 @@ control_existencias ctrl = new control_existencias();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         jDesktopPane1.setBackground(java.awt.Color.lightGray);
 
@@ -75,51 +70,23 @@ control_existencias ctrl = new control_existencias();
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\agutierrezh\\Documents\\NetBeansProjects\\ManpowerInventario\\ManpowerInventario\\src\\inventario\\imagenes\\manpower.png")); // NOI18N
         jLabel2.setLabelFor(jDesktopPane1);
         jDesktopPane1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 910, 520);
+        jLabel2.setBounds(0, 0, 950, 520);
 
-        Asignacion.setText("Asignación");
+        Asignacion.setText("Asignación/Cambio");
         Asignacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        Asignacion.setPreferredSize(new java.awt.Dimension(100, 50));
+        Asignacion.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        Al450.setText("L450");
-        Al450.addActionListener(new java.awt.event.ActionListener() {
+        A13.setText("Nueva");
+        A13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Al450ActionPerformed(evt);
+                A13ActionPerformed(evt);
             }
         });
-        Asignacion.add(Al450);
-
-        Ax270.setText("X270");
-        Ax270.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Ax270ActionPerformed(evt);
-            }
-        });
-        Asignacion.add(Ax270);
-
-        Atinny.setText("Tinny");
-        Atinny.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtinnyActionPerformed(evt);
-            }
-        });
-        Asignacion.add(Atinny);
-
-        Al470.setText("L470");
-        Asignacion.add(Al470);
-
-        Acpu.setText("CPU");
-        Asignacion.add(Acpu);
-
-        A13.setText("13");
         Asignacion.add(A13);
-
-        Aarrendamiento.setText("Arrendamiento");
-        Asignacion.add(Aarrendamiento);
 
         jMenuBar1.add(Asignacion);
 
-        EnSal.setText("Entrada/Salida");
+        EnSal.setText("Entrada");
         EnSal.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         EnSal.setMaximumSize(new java.awt.Dimension(130, 32767));
 
@@ -302,7 +269,7 @@ control_existencias ctrl = new control_existencias();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 905, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,18 +359,6 @@ control_existencias ctrl = new control_existencias();
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void Al450ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Al450ActionPerformed
-InterfazL450 IL450 = new InterfazL450();
-        jDesktopPane1.add(IL450);
-        IL450.show();        // TODO add your handling code here:
-    }//GEN-LAST:event_Al450ActionPerformed
-
-    private void Ax270ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ax270ActionPerformed
-InterfazX270 IX270 = new InterfazX270();
-        jDesktopPane1.add(IX270);
-        IX270.show();            // TODO add your handling code here:
-    }//GEN-LAST:event_Ax270ActionPerformed
-
     private void EsregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsregistrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EsregistrarActionPerformed
@@ -412,11 +367,21 @@ InterfazX270 IX270 = new InterfazX270();
         // TODO add your handling code here:
     }//GEN-LAST:event_El450ActionPerformed
 
-    private void AtinnyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtinnyActionPerformed
-      InterfazTinny ITinny = new InterfazTinny();
-        jDesktopPane1.add(ITinny);
-        ITinny.show();   // TODO add your handling code here:
-    }//GEN-LAST:event_AtinnyActionPerformed
+    private void A13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A13ActionPerformed
+     String serie = JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
+       if(ctrl.existe_cliente(serie))
+       {
+        InterfazL450 l450 = new InterfazL450(ctrl);
+        jDesktopPane1.add(l450);
+        l450.show(); 
+       }
+       else
+       {
+              
+          JOptionPane.showMessageDialog(null,"El cliente no existe, debe registrarlo","Mensaje",JOptionPane.QUESTION_MESSAGE);  
+       }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_A13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -454,13 +419,7 @@ InterfazX270 IX270 = new InterfazX270();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem A13;
-    private javax.swing.JMenuItem Aarrendamiento;
-    private javax.swing.JMenuItem Acpu;
-    private javax.swing.JMenuItem Al450;
-    private javax.swing.JMenuItem Al470;
     private javax.swing.JMenu Asignacion;
-    private javax.swing.JMenuItem Atinny;
-    private javax.swing.JMenuItem Ax270;
     private javax.swing.JMenuItem Buscararticulos;
     private javax.swing.JMenuItem E13;
     private javax.swing.JMenuItem Earrendamiento;
