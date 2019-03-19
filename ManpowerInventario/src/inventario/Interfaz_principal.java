@@ -366,6 +366,10 @@ InterfazEntrada ent = new InterfazEntrada();
     }//GEN-LAST:event_EsregistrarActionPerformed
 
     private void El450ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_El450ActionPerformed
+        InterfazRL450 rl450 = new InterfazRL450();
+        jDesktopPane1.add(rl450);
+        rl450.show();
+  // TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_El450ActionPerformed
 
