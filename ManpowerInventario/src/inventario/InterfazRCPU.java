@@ -10,12 +10,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ANDRES
  */
-public class InterfazRL450 extends javax.swing.JInternalFrame {
+public class InterfazRCPU extends javax.swing.JInternalFrame {
 
    
     private Object[][] datostabla;    
     control_existencias ctr = new control_existencias();
-    public InterfazRL450() {
+    public InterfazRCPU() {
         initComponents();
         mostrar_tabla();
         
@@ -49,7 +49,7 @@ public class InterfazRL450 extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Registro L450");
+        setTitle("Registro CPU");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

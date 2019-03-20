@@ -42,11 +42,12 @@ control_existencias ctrl = new control_existencias();
         jMenuItem1 = new javax.swing.JMenuItem();
         El450 = new javax.swing.JMenuItem();
         Ex270 = new javax.swing.JMenuItem();
-        Earrendamiento = new javax.swing.JMenuItem();
-        E13 = new javax.swing.JMenuItem();
-        Ecpu = new javax.swing.JMenuItem();
         El470 = new javax.swing.JMenuItem();
+        E13 = new javax.swing.JMenuItem();
         Etinny = new javax.swing.JMenuItem();
+        Ecpu = new javax.swing.JMenuItem();
+        Emonitor = new javax.swing.JMenuItem();
+        Earrendamiento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         Buscararticulos = new javax.swing.JMenuItem();
@@ -70,7 +71,7 @@ control_existencias ctrl = new control_existencias();
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\agutierrezh\\Documents\\NetBeansProjects\\ManpowerInventario\\ManpowerInventario\\src\\inventario\\imagenes\\manpower.png")); // NOI18N
         jLabel2.setLabelFor(jDesktopPane1);
         jDesktopPane1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 950, 520);
+        jLabel2.setBounds(0, 0, 970, 520);
 
         Asignacion.setText("Asignación/Cambio");
         Asignacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -89,6 +90,7 @@ control_existencias ctrl = new control_existencias();
         EnSal.setText("Entrada");
         EnSal.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         EnSal.setMaximumSize(new java.awt.Dimension(130, 32767));
+        EnSal.setPreferredSize(new java.awt.Dimension(50, 19));
 
         Esregistrar.setText("Registrar");
         Esregistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -136,22 +138,60 @@ control_existencias ctrl = new control_existencias();
         jMenu1.add(El450);
 
         Ex270.setText("X270");
+        Ex270.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ex270ActionPerformed(evt);
+            }
+        });
         jMenu1.add(Ex270);
 
-        Earrendamiento.setText("Arrendamiento");
-        jMenu1.add(Earrendamiento);
-
-        E13.setText("13");
-        jMenu1.add(E13);
-
-        Ecpu.setText("CPU");
-        jMenu1.add(Ecpu);
-
         El470.setText("L470");
+        El470.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                El470ActionPerformed(evt);
+            }
+        });
         jMenu1.add(El470);
 
+        E13.setText("13");
+        E13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                E13ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(E13);
+
         Etinny.setText("Tinny");
+        Etinny.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EtinnyActionPerformed(evt);
+            }
+        });
         jMenu1.add(Etinny);
+
+        Ecpu.setText("CPU");
+        Ecpu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EcpuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Ecpu);
+
+        Emonitor.setText("Monitor");
+        Emonitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmonitorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Emonitor);
+
+        Earrendamiento.setText("Arrendamiento");
+        Earrendamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EarrendamientoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Earrendamiento);
 
         jMenuBar1.add(jMenu1);
 
@@ -389,6 +429,49 @@ InterfazEntrada ent = new InterfazEntrada();
         // TODO add your handling code here:
     }//GEN-LAST:event_A13ActionPerformed
 
+    private void Ex270ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ex270ActionPerformed
+   InterfazRX270 rx270 = new InterfazRX270();
+        jDesktopPane1.add(rx270);
+        rx270.show();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ex270ActionPerformed
+
+    private void El470ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_El470ActionPerformed
+ InterfazRL470 rl470 = new InterfazRL470();
+        jDesktopPane1.add(rl470);
+        rl470.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_El470ActionPerformed
+
+    private void E13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_E13ActionPerformed
+ InterfazR13 r13 = new InterfazR13();
+        jDesktopPane1.add(r13);
+        r13.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_E13ActionPerformed
+
+    private void EtinnyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EtinnyActionPerformed
+ InterfazRTinny rTinny = new InterfazRTinny();
+        jDesktopPane1.add(rTinny);
+        rTinny.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_EtinnyActionPerformed
+
+    private void EcpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EcpuActionPerformed
+ InterfazRCPU rCPU = new InterfazRCPU();
+        jDesktopPane1.add(rCPU);
+        rCPU.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_EcpuActionPerformed
+
+    private void EmonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmonitorActionPerformed
+InterfazRMonitor rMonitor = new InterfazRMonitor();
+        jDesktopPane1.add(rMonitor);
+        rMonitor.show();         // TODO add your handling code here:
+    }//GEN-LAST:event_EmonitorActionPerformed
+
+    private void EarrendamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EarrendamientoActionPerformed
+InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
+        jDesktopPane1.add(rArrendamiento);
+        rArrendamiento.show();         // TODO add your handling code here:
+    }//GEN-LAST:event_EarrendamientoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -432,6 +515,7 @@ InterfazEntrada ent = new InterfazEntrada();
     private javax.swing.JMenuItem Ecpu;
     private javax.swing.JMenuItem El450;
     private javax.swing.JMenuItem El470;
+    private javax.swing.JMenuItem Emonitor;
     private javax.swing.JMenu EnSal;
     private javax.swing.JMenuItem Esregistrar;
     private javax.swing.JMenuItem Etinny;
