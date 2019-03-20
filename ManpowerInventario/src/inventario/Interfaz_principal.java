@@ -49,10 +49,7 @@ control_existencias ctrl = new control_existencias();
         Emonitor = new javax.swing.JMenuItem();
         Earrendamiento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        Buscararticulos = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        Lineas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         item_venta = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -75,7 +72,7 @@ control_existencias ctrl = new control_existencias();
 
         Asignacion.setText("Asignación/Cambio");
         Asignacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        Asignacion.setPreferredSize(new java.awt.Dimension(150, 50));
+        Asignacion.setPreferredSize(new java.awt.Dimension(180, 50));
 
         A13.setText("Nueva");
         A13.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +87,7 @@ control_existencias ctrl = new control_existencias();
         EnSal.setText("Entrada");
         EnSal.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         EnSal.setMaximumSize(new java.awt.Dimension(130, 32767));
-        EnSal.setPreferredSize(new java.awt.Dimension(50, 19));
+        EnSal.setPreferredSize(new java.awt.Dimension(0, 0));
 
         Esregistrar.setText("Registrar");
         Esregistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -196,49 +193,17 @@ control_existencias ctrl = new control_existencias();
         jMenuBar1.add(jMenu1);
 
         jMenu2.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu2.setText("Artículos");
+        jMenu2.setText("Lineas telefonicas");
         jMenu2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jMenu2.setPreferredSize(new java.awt.Dimension(100, 50));
+        jMenu2.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem3.setText("Registar");
-        jMenuItem3.setBorder(new javax.swing.border.SoftBevelBorder(0));
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        Lineas.setText("Lineas");
+        Lineas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                LineasActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
-
-        Buscararticulos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Buscararticulos.setText("Lista de articulos");
-        Buscararticulos.setBorder(new javax.swing.border.SoftBevelBorder(0));
-        Buscararticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscararticulosActionPerformed(evt);
-            }
-        });
-        jMenu2.add(Buscararticulos);
-
-        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem6.setText("Actualizar stock");
-        jMenuItem6.setBorder(new javax.swing.border.SoftBevelBorder(0));
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem6);
-
-        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem8.setText("Devoluciones");
-        jMenuItem8.setBorder(new javax.swing.border.SoftBevelBorder(0));
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem8);
+        jMenu2.add(Lineas);
 
         jMenuBar1.add(jMenu2);
 
@@ -331,21 +296,6 @@ control_existencias ctrl = new control_existencias();
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       
-        Interfaz_articulo art = new Interfaz_articulo();
-        jDesktopPane1.add(art);
-        art.show();       
-            
-        
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void BuscararticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscararticulosActionPerformed
-        interfaz_buscararticulos bus = new interfaz_buscararticulos();
-        jDesktopPane1.add(bus);
-        bus.show(); 
-    }//GEN-LAST:event_BuscararticulosActionPerformed
-
     private void item_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_ventaActionPerformed
      String venta = JOptionPane.showInputDialog(this,"Ingrese el documento del cliente: ",JOptionPane.OK_OPTION);
        if(ctrl.existe_cliente(venta))
@@ -367,23 +317,11 @@ control_existencias ctrl = new control_existencias();
         proveedor.show(); 
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-    Interfaz_actualizarstock stock = new Interfaz_actualizarstock();
-    jDesktopPane1.add(stock);
-    stock.show();
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
     interfaz_consultas consulta = new interfaz_consultas();
     jDesktopPane1.add(consulta);
     consulta.show();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-    Interfaz_devoluciones dev = new Interfaz_devoluciones();
-    jDesktopPane1.add(dev);
-    dev.show();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
@@ -472,6 +410,12 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
         rArrendamiento.show();         // TODO add your handling code here:
     }//GEN-LAST:event_EarrendamientoActionPerformed
 
+    private void LineasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LineasActionPerformed
+ InterfazRLineas rlineas = new InterfazRLineas();
+        jDesktopPane1.add(rlineas);
+        rlineas.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_LineasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -509,7 +453,6 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem A13;
     private javax.swing.JMenu Asignacion;
-    private javax.swing.JMenuItem Buscararticulos;
     private javax.swing.JMenuItem E13;
     private javax.swing.JMenuItem Earrendamiento;
     private javax.swing.JMenuItem Ecpu;
@@ -520,6 +463,7 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
     private javax.swing.JMenuItem Esregistrar;
     private javax.swing.JMenuItem Etinny;
     private javax.swing.JMenuItem Ex270;
+    private javax.swing.JMenuItem Lineas;
     private javax.swing.JMenuItem item_venta;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
@@ -531,11 +475,8 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }
