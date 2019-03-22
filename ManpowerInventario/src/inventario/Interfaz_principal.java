@@ -68,7 +68,7 @@ control_existencias ctrl = new control_existencias();
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\agutierrezh\\Documents\\NetBeansProjects\\ManpowerInventario\\ManpowerInventario\\src\\inventario\\imagenes\\manpower.png")); // NOI18N
         jLabel2.setLabelFor(jDesktopPane1);
         jDesktopPane1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 970, 520);
+        jLabel2.setBounds(0, 0, 1340, 520);
 
         Asignacion.setText("Asignación/Cambio");
         Asignacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -274,11 +274,13 @@ control_existencias ctrl = new control_existencias();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1340, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
