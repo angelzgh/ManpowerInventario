@@ -298,7 +298,7 @@ control_existencias ctrl = new control_existencias();
 
     private void item_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_ventaActionPerformed
      String venta = JOptionPane.showInputDialog(this,"Ingrese el documento del cliente: ",JOptionPane.OK_OPTION);
-       if(ctrl.existe_cliente(venta))
+       if(ctrl.existe_L450(venta))
        {
         Interfaz_factura fact = new Interfaz_factura(ctrl);
         jDesktopPane1.add(fact);
@@ -353,16 +353,20 @@ InterfazEntrada ent = new InterfazEntrada();
 
     private void A13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A13ActionPerformed
      String serie = JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
-       if(ctrl.existe_cliente(serie))
+       if(ctrl.existe_L450(serie))
        {
         InterfazL450 l450 = new InterfazL450(ctrl);
         jDesktopPane1.add(l450);
         l450.show(); 
+       } else if(ctrl.existe_X270(serie)){
+       InterfazX270 x270 = new InterfazX270(ctrl);
+        jDesktopPane1.add(x270);
+        x270.show();
        }
        else
        {
               
-          JOptionPane.showMessageDialog(null,"El cliente no existe, debe registrarlo","Mensaje",JOptionPane.QUESTION_MESSAGE);  
+          JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
        }
         // TODO add your handling code here:
     }//GEN-LAST:event_A13ActionPerformed

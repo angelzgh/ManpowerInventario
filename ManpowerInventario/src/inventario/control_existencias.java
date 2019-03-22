@@ -53,11 +53,18 @@ public class control_existencias
          sen = new Sentencias_sql();
      }
      
-     public boolean existe_cliente( String cod)
+     public boolean existe_L450( String cod)
      {
          
         this.Documento = cod;
-        return sen.existencias(cod, " from cliente where Documento='"+cod+"';");
+        return sen.existencias(cod, " from cliente where Documento LIKE ('"+0+"%') and Documento='"+cod+"';");
+      
+    }
+     public boolean existe_X270( String cod)
+     {
+         
+        this.Documento = cod;
+        return sen.existencias(cod, " from cliente where Documento LIKE ('"+1+"%') and Documento='"+cod+"';");
       
     }
      public boolean existe_proveedor( String id_prov)
