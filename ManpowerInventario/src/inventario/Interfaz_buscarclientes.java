@@ -137,7 +137,7 @@ public class Interfaz_buscarclientes extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     String[] columnas = {"Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","Telefono"};
-        datostabla = ctr.datos_cliente(buscarcliente.getText());
+    datostabla = ctr.datos_cliente(buscarcliente.getText());
         DefaultTableModel datostcli = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datostcli);
         buscarcliente.setText("");

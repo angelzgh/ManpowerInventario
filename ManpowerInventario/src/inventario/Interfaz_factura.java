@@ -122,6 +122,12 @@ public class Interfaz_factura extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Num factura");
 
+        num_factura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                num_facturaActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Vendedor");
 
         jLabel4.setText("Forma pago");
@@ -524,6 +530,10 @@ public class Interfaz_factura extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El total no es valido");
             }
     }//GEN-LAST:event_imprimir_btActionPerformed
+
+    private void num_facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_facturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_num_facturaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Reg_articulo;
