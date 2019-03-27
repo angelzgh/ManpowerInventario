@@ -49,7 +49,7 @@ public class InterfazRTinny extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Registro 13");
+        setTitle("Registro Tinny");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

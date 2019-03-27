@@ -24,7 +24,7 @@ public class InterfazRCPU extends javax.swing.JInternalFrame {
     
      public void mostrar_tabla(){
         control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
-        String[] columnas = {"Serie","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta"};
+        String[] columnas = {"Serie","Monitor","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta Responsiva","Comentarios","Serie anterior"};
         datostabla = control.consulta_clientes();
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
