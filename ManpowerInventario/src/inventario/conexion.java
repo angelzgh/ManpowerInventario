@@ -14,7 +14,7 @@ public class conexion {
    
    
    
-   private final String url = "jdbc:mysql://localhost/facturaci";
+   private final String url = "jdbc:mysql://localhost/facturacion";
     PreparedStatement psPrepararSentencia;
     Connection con = null;
    
@@ -33,6 +33,7 @@ public class conexion {
          catch(SQLException e)
          {
          System.out.println(e);
+             System.out.println("No conectado");
          }
          catch(ClassNotFoundException e)
          {

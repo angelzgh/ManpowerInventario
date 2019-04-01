@@ -93,10 +93,10 @@ public class Sentencias_sql {
          return false;
      }
   }
-     public boolean existenciasL450(String from_where){
+     public boolean existenciasL450(String campo,String from_where){
      int registros = 0;
      try{
-         ps = con.conectado().prepareStatement("SELECT count Documento as total  " + from_where);
+         ps = con.conectado().prepareStatement("SELECT count("+campo+") as total  " + from_where);
          res = ps.executeQuery();
          res.next();
          registros = res.getInt("total");

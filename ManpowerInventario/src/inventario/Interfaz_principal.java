@@ -310,6 +310,7 @@ InterfazEntrada ent = new InterfazEntrada();
     private void A13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A13ActionPerformed
      
         String serie = JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
+        System.out.println("Cadena:"+serie);
        if(ctrl.existe_L450(serie))
        {
         InterfazL450 l450 = new InterfazL450(ctrl);
