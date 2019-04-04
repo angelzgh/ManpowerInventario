@@ -61,6 +61,14 @@ public class control_existencias
         return sen.existencias(cod," from cliente where Documento LIKE ('"+0+"%') and Documento='"+cod+"';");
       
     }
+      public boolean existeEquipos( String cod)
+     {
+         
+        this.Documento = cod;
+      
+        return sen.existencias(cod," from cliente where Documento='"+cod+"';");
+      
+    }
      public boolean existe_X270( String cod)
      {
          

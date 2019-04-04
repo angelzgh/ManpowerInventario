@@ -57,15 +57,24 @@ control_existencias ctrl = new control_existencias();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1350, 650));
+        setMinimumSize(new java.awt.Dimension(1350, 650));
+        setPreferredSize(new java.awt.Dimension(1350, 650));
         setResizable(false);
 
         jDesktopPane1.setBackground(java.awt.Color.lightGray);
+        jDesktopPane1.setMaximumSize(new java.awt.Dimension(1350, 650));
+        jDesktopPane1.setMinimumSize(new java.awt.Dimension(1350, 650));
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(1350, 650));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\agutierrezh\\Documents\\NetBeansProjects\\ManpowerInventario\\ManpowerInventario\\src\\inventario\\imagenes\\manpower.png")); // NOI18N
         jLabel2.setLabelFor(jDesktopPane1);
+        jLabel2.setMaximumSize(new java.awt.Dimension(1350, 650));
+        jLabel2.setMinimumSize(new java.awt.Dimension(1350, 650));
+        jLabel2.setPreferredSize(new java.awt.Dimension(1350, 650));
         jDesktopPane1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 1340, 520);
+        jLabel2.setBounds(0, 0, 1350, 650);
 
         Asignacion.setText("Asignación/Cambio");
         Asignacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -103,7 +112,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem4.setText("Registrar");
-        jMenuItem4.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        jMenuItem4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -113,7 +122,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem1.setText("Buscar clientes");
-        jMenuItem1.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        jMenuItem1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuItem1.setMaximumSize(new java.awt.Dimension(22767, 22767));
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +220,7 @@ control_existencias ctrl = new control_existencias();
 
         item_venta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         item_venta.setText("Nueva venta");
-        item_venta.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        item_venta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         item_venta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 item_ventaActionPerformed(evt);
@@ -228,7 +237,7 @@ control_existencias ctrl = new control_existencias();
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jMenuItem7.setText("Consulta facturas clientes");
-        jMenuItem7.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        jMenuItem7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -245,13 +254,13 @@ control_existencias ctrl = new control_existencias();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1340, Short.MAX_VALUE))
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
