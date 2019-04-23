@@ -17,12 +17,12 @@ public class InterfazRCPU extends javax.swing.JInternalFrame {
     control_existencias ctr = new control_existencias();
     public InterfazRCPU() {
         initComponents();
-        mostrar_tabla();
+       // mostrar_tabla();
         
     }
               
     
-     public void mostrar_tabla(){
+    /** public void mostrar_tabla(){
         control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
         String[] columnas = {"Serie","Monitor","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta Responsiva","Comentarios","Serie anterior"};
         datostabla = control.consulta_clientes();

@@ -43,11 +43,9 @@ public class Interfaz_factura extends javax.swing.JInternalFrame {
         
         this.con = con;
         
-        cliente_factura.setText( con.ingresa_nombre_Cliente() );
+     
         
-        apell_cli.setText(con.ingresa_apellidos_Cliente());
         
-        num_factura.setText(con.GenerarNumeroFactura());  
         
         Date hoy = new Date();
         fecha_fact.setText( hoy.getDate()+"/"+(hoy.getMonth()+1) +"/"+(hoy.getYear()+1900) );
@@ -58,6 +56,7 @@ public class Interfaz_factura extends javax.swing.JInternalFrame {
         {
         combo_articulos.addItem(idarticulo[i]);
         }
+        
         Object[] formapago = con.combox("forma_de_pago","id_formapago");
         combo_formapago.removeAllItems();
         for(int i=0;i<formapago.length;i++)
@@ -202,6 +201,11 @@ public class Interfaz_factura extends javax.swing.JInternalFrame {
         });
 
         combo_formapago.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_formapago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_formapagoActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setText("Descuento");
@@ -392,18 +396,7 @@ public class Interfaz_factura extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reg_facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reg_facturaActionPerformed
-    con.registrar_factura(num_factura.getText(),vend_fact.getText(),fecha_fact.getText(),combo_formapago.getSelectedItem().toString());
-        cant_art.setEnabled(true);
-        iva_art.setEnabled(true);
-        desc_art.setEnabled(true);
-        Total_art.setEnabled(true);
-        combo_articulos.setEnabled(true);
-        Reg_articulo.setEnabled(true);
-        total_factura.setEnabled(true);
-        imprimir_bt.setEnabled(true);
-        reg_factura.setEnabled(false);
-        combo_formapago.setEnabled(false);
-        vend_fact.setEnabled(false);
+   
     }//GEN-LAST:event_reg_facturaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -456,46 +449,6 @@ public class Interfaz_factura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cant_artKeyReleased
 
     private void Reg_articuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Reg_articuloActionPerformed
-        int c = Integer.parseInt(stock_art.getText());
-        int b = Integer.parseInt(cant_art.getText());
-                
-        if(!cant_art.getText().equals("0") )
-        {
-            if (c > b)
-            {            
-            
-            if( con.registrar_producto(num_factura.getText(),combo_articulos.getSelectedItem().toString(),cant_art.getText(),Total_art.getText()))
-            {
-                JOptionPane.showMessageDialog(this, "El articulo se registro con exito");
-                cant_art.setText("0");
-                Total_art.setText("0");                
-                desc_art.setText("");
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "Error al registrar el articulo");
-            }
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "El stock del articulo no soporta la venta por favor actualize en stock");
-            }
-        }
-            else
-            {
-            JOptionPane.showMessageDialog(this, "La cantidad no es valida");
-            }
-        
-        String[] columnas = {"Numero_factura","Codigo articulo","Descripcion","Cantidad","Total"};
-        datostabla = con.datos_detallefactura(num_factura.getText());
-        DefaultTableModel datosta = new DefaultTableModel(datostabla,columnas);
-        jTable1.setModel(datosta);
-        
-        Double a = con.total_factura(num_factura.getText());
-        
-        total_factura.setText(a.toString());
-        IVA iva = new IVA(Double.parseDouble(total_factura.getText()));
-        iva_art.setText(iva.calcular_iva().toString());
         
     }//GEN-LAST:event_Reg_articuloActionPerformed
 
@@ -534,6 +487,10 @@ public class Interfaz_factura extends javax.swing.JInternalFrame {
     private void num_facturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_facturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_num_facturaActionPerformed
+
+    private void combo_formapagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_formapagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_formapagoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Reg_articulo;

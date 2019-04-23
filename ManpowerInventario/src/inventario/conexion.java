@@ -12,9 +12,7 @@ import java.sql.*;
 public class conexion {
 
    
-   
-   
-   private final String url = "jdbc:mysql://localhost/facturacion";
+   private final String url = "jdbc:mysql://localhost/mpi";
     PreparedStatement psPrepararSentencia;
     Connection con = null;
    
@@ -27,7 +25,7 @@ public class conexion {
          
          con = DriverManager.getConnection(url,"root","");
          if (con!=null){
-            System.out.println("Conexión a base de datos facturacion. listo");
+            System.out.println("Conexión a base de datos Manpower listo");
          }
       }
          catch(SQLException e)

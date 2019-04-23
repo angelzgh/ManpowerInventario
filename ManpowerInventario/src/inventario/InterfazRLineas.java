@@ -17,12 +17,12 @@ public class InterfazRLineas extends javax.swing.JInternalFrame {
     control_existencias ctr = new control_existencias();
     public InterfazRLineas() {
         initComponents();
-        mostrar_tabla();
+       // mostrar_tabla();
         
     }
               
     
-     public void mostrar_tabla(){
+     /**public void mostrar_tabla(){
         control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
         String[] columnas = {"Teléfono","Status","Nombre del plan","Monto renta","Modelo","Fecha Inicio","Fecha termino","Nombre","Correo","UDN","CC", "Comentarios"};
         datostabla = control.consulta_clientes();

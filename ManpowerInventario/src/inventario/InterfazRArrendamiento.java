@@ -17,12 +17,12 @@ public class InterfazRArrendamiento extends javax.swing.JInternalFrame {
     control_existencias ctr = new control_existencias();
     public InterfazRArrendamiento() {
         initComponents();
-        mostrar_tabla();
+       // mostrar_tabla();
         
     }
               
     
-     public void mostrar_tabla(){
+     /**public void mostrar_tabla(){
         control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
         String[] columnas = {"Serie","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta"};
         datostabla = control.consulta_clientes();
@@ -30,7 +30,7 @@ public class InterfazRArrendamiento extends javax.swing.JInternalFrame {
         jTable1.setModel(datos);
 
 
-}
+}*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -77,6 +77,7 @@ public class Sentencias_sql {
      int registros = 0;
      try{
          ps = con.conectado().prepareStatement("SELECT count("+campo+") as total  " + from_where);
+         System.out.println("Campo:"+campo);
          res = ps.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -93,26 +94,7 @@ public class Sentencias_sql {
          return false;
      }
   }
-     public boolean existenciasL450(String campo,String from_where){
-     int registros = 0;
-     try{
-         ps = con.conectado().prepareStatement("SELECT count("+campo+") as total  " + from_where);
-         res = ps.executeQuery();
-         res.next();
-         registros = res.getInt("total");
-         res.close();
-      }catch(SQLException e){
-         System.out.println(e);
-      }
-     
-     if (registros >0)
-     {return true;
-     }
-     else
-     {
-         return false;
-     }
-  }
+    
      public String datos_string(String nombre_columna, String sentenciasql){
         
     String datos ="";
@@ -156,22 +138,7 @@ public class Sentencias_sql {
     }
     return datos;
  }
-     
-     public Double datos_totalfactura(String campo, String sql){
-    double data =0;
-      try{
-         ps= con.conectado().prepareStatement(sql);
-         res = ps.executeQuery();
-         while(res.next()){
-            data = res.getDouble(campo);
-         }
-         res.close();
-          }catch(SQLException e){
-         System.out.println(e);
-    }
-    return data;
-    }
-        
+   
      
      
      }

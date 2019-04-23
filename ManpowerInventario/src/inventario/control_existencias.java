@@ -4,14 +4,15 @@
  */
 package inventario;
 
-/**
- *
- * @author ANDRES
- */
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
 public class control_existencias 
 {
+    
      private Sentencias_sql sen;
-     private String Documento;
+     public String Documento;
      private  String numero_factura="";
 
     public String getNumero_factura() {
@@ -53,70 +54,103 @@ public class control_existencias
          sen = new Sentencias_sql();
      }
      
-     public boolean existe_L450( String cod)
+     public boolean existe_equipoL450( String cod)
      {
          
         this.Documento = cod;
       
-        return sen.existencias(cod," from cliente where Documento LIKE ('"+0+"%') and Documento='"+cod+"';");
+        return sen.existencias(cod," from Equipo where serie like '"+"PF0E"+"%' and serie="+cod+";");
       
     }
-      public boolean existeEquipos( String cod)
+     public boolean existe_equipoX270( String cod)
      {
          
         this.Documento = cod;
       
-        return sen.existencias(cod," from cliente where Documento='"+cod+"';");
+        return sen.existencias(cod," from Equipo where serie like '"+"PC0SU"+"%' and serie="+cod+";");
       
     }
-     public boolean existe_X270( String cod)
+   public boolean existe_equipo( String cod)
      {
          
         this.Documento = cod;
-        return sen.existencias(cod, " from cliente where Documento LIKE ('"+1+"%') and Documento='"+cod+"';");
+      
+        return sen.existencias(cod," from Equipo where serie="+cod+";");
       
     }
-     public boolean existe_proveedor( String id_prov)
-     {
-        this.No_documento = id_prov;
-        return sen.existencias(id_prov, " from proveedor where No_documento='"+id_prov+"';");
      
-     }
-     public boolean existe_articulo( String idart)
-     {
-        this.id_articulo = idart;
-        return sen.existencias(idart, " from articulo where id_articulo='"+idart+"';");
-
-}
-     public String ingresa_nombre_Cliente()
+     public String ingresa_serie()
      { 
        String result;
-       result = sen.datos_string("nombres", "select nombres from cliente where Documento='"+this.Documento+"';");
+       result = sen.datos_string("serie", "select serie from equipo where serie="+this.Documento+";");
        return result;
     }
-     public String ingresa_apellidos_Cliente()
-     { 
-       String resultado;
-       resultado = sen.datos_string("apellidos", "select apellidos from cliente where Documento='"+this.Documento+"';");
-       return resultado;
-    }
-     public String GenerarNumeroFactura()
-     {
-        String codigo = "FACT-";
-        for(int i=1; i<=6;i++){
-           int num = (int)((Math.random()*(5))+6);
-           codigo = codigo  +  num;
-        }
-        numero_factura = codigo;
-        return codigo;
-    }
-     public void registrar_factura(String Nnm_factura, String Nombre_empleado, String fecha_facturacion, String cod_formapago)
-     {
-        String[] datos = {Nnm_factura, Documento, Nombre_empleado,fecha_facturacion,cod_formapago};
-        sen.insertar(datos, "insert into factura(Nnm_factura,cod_cliente,Nombre_empleado,fecha_facturacion, cod_formapago) values(?,?,?,?,?);");
-    }
      
-      public boolean update_factura(String factura, String total, String iva)
+    public String ingresa_status(String nueva)
+     { 
+         
+       String result;
+       result = sen.datos_string("descripcion", "select s.descripcion from status s, equipo e where e.serie="+nueva+" and e.status_idstatus=s.idstatus;");
+       return result;
+    }
+    public String ingresa_cc(String nueva)
+     { 
+         
+       String result;
+       result = sen.datos_string("cc_idCC", "select cc_idcc from asignacion  where equipo_serie="+nueva+";");
+       return result;
+    }public String ingresa_udn(String nueva)
+     { 
+         
+       String result;
+       result = sen.datos_string("descripcion", "select u.descripcion from udn u, asignacion a where a.Equipo_serie="+nueva+" and a.udn_idudn=u.idudn;");
+       return result;
+    }
+    public String ingresa_soporte(String nueva)
+     { 
+         
+       String result;
+       result = sen.datos_string("nombre", "select s.nombre from soporte s, asignacion a where a.equipo_serie="+nueva+" and a.soporte_idsoporte=s.idsoporte;");
+       return result;
+    }
+    public String ingresa_nombre(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("nombre", "select nombre from asignacion where equipo_serie="+nueva+";");
+       return result;
+    }
+     public String ingresa_noempleado(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("noempleado", "select noempleado from asignacion where equipo_serie="+nueva+";");
+       return result;
+    }public String ingresa_correo(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("correo", "select correo from asignacion where equipo_serie="+nueva+";");
+       return result;
+    }public String ingresa_jfd(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("jefe", "select jefe from asignacion where equipo_serie="+nueva+";");
+       return result;
+    }public String ingresa_fecha(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("fechaasig", "select fechaasig from asignacion where equipo_serie="+nueva+";");
+       return result;
+    }public String ingresa_host(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("hostname", "select hostname from asignacion where equipo_serie="+nueva+";");
+       return result;
+    }public String ingresa_bit(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("bitlocker", "select bitlocker from asignacion where equipo_serie="+nueva+";");
+       return result;
+     }
+          public boolean update_factura(String factura, String total, String iva)
       {
           String campos[] = {total, iva,factura};           
           return sen.insertar(campos, "update factura set total_factura=?, IVA=? where Nnm_factura=?;");
@@ -168,11 +202,20 @@ public class control_existencias
         String[] columnas={cod_detallefactura,cod_detallearticulo,Motivo,fecha_devolucion,cantidad};
         return sen.insertar(columnas, "insert into devolucion(cod_detallefactura,cod_detallearticulo,Motivo,fecha_devolucion,cantidad) values(?,?,?,?,?)");
         
-       }      
+       }
+       public boolean asignacion(String id,String serie, String nombre, String noempleado, String correo, String jefe,int udn,int cc,String fechaasig,String hostname,String bitlocker,int soporte, String serieanterior, String fechabaja,int status)
+    {               
+        
+            String[] columnas={id,serie,nombre,noempleado,correo,jefe,Integer.toString(udn),Integer.toString(cc),fechaasig,hostname,bitlocker,Integer.toString(soporte),serieanterior,fechabaja,Integer.toString(status)};
+            return sen.insertar(columnas, "insert into asignacion(idAsignacion,Equipo_Serie,Nombre,Noempleado,Correo,Jefe,UDN_idUDN,CC_idCC,fechaasig,Hostname,Bitlocker,Soporte_idSoporte,EquipoAnterior,Fechaterm,status_idStatus) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                  
+        
+    }
+       public boolean acualizarEquipo(int status,String Carta,String serie){
+           String[] columnas={Integer.toString(status),Carta};
+        return sen.insertar(columnas, "update equipo set status_idstatus=?,cartar=? where serie='"+serie+"';");
        
-    
-     
-       
+       }
         public boolean registrar_producto(String Nnm_factura,String id_articulo,String cantidad, String total)
         {
         String[] datos = {Nnm_factura,id_articulo, cantidad,total};
@@ -187,9 +230,10 @@ public class control_existencias
             return false;
         }
     }
+
+    
+
+    
         
-        public Double total_factura(String numfact)
-        {
-        return sen.datos_totalfactura("total", "select round( sum( total ) , 2 ) as total from detalle_factura where cod_factura='"+numfact+"';");
-    }
+       
     }

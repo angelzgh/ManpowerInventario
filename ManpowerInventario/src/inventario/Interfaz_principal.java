@@ -20,6 +20,26 @@ control_existencias ctrl = new control_existencias();
     public Interfaz_principal() {
         initComponents();
     }
+    public void equipoasig (){
+    String serie = JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
+        System.out.println("Cadena:"+"'"+serie+"'");
+       if(ctrl.existe_equipoL450("'"+serie+"'"))
+       {
+        InterfazL450 l450 = new InterfazL450(ctrl);
+        jDesktopPane1.add(l450);
+        l450.show(); 
+       } else if(ctrl.existe_equipoX270("'"+serie+"'")){
+       InterfazX270 x270 = new InterfazX270(ctrl);
+        jDesktopPane1.add(x270);
+        x270.show();
+       }
+       else
+       {
+              
+          JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
+       }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +54,7 @@ control_existencias ctrl = new control_existencias();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Asignacion = new javax.swing.JMenu();
-        A13 = new javax.swing.JMenuItem();
+        Asig = new javax.swing.JMenuItem();
         EnSal = new javax.swing.JMenu();
         Esregistrar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -50,8 +70,6 @@ control_existencias ctrl = new control_existencias();
         Earrendamiento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Lineas = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        item_venta = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
 
@@ -65,10 +83,8 @@ control_existencias ctrl = new control_existencias();
         jDesktopPane1.setBackground(java.awt.Color.lightGray);
         jDesktopPane1.setMaximumSize(new java.awt.Dimension(1350, 650));
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(1350, 650));
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(1350, 650));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\agutierrezh\\Documents\\NetBeansProjects\\ManpowerInventario\\ManpowerInventario\\src\\inventario\\imagenes\\manpower.png")); // NOI18N
         jLabel2.setLabelFor(jDesktopPane1);
         jLabel2.setMaximumSize(new java.awt.Dimension(1350, 650));
         jLabel2.setMinimumSize(new java.awt.Dimension(1350, 650));
@@ -80,13 +96,13 @@ control_existencias ctrl = new control_existencias();
         Asignacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         Asignacion.setPreferredSize(new java.awt.Dimension(180, 50));
 
-        A13.setText("Nueva");
-        A13.addActionListener(new java.awt.event.ActionListener() {
+        Asig.setText("Nueva");
+        Asig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A13ActionPerformed(evt);
+                AsigActionPerformed(evt);
             }
         });
-        Asignacion.add(A13);
+        Asignacion.add(Asig);
 
         jMenuBar1.add(Asignacion);
 
@@ -213,23 +229,6 @@ control_existencias ctrl = new control_existencias();
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu3.setText("Facturación");
-        jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jMenu3.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        item_venta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        item_venta.setText("Nueva venta");
-        item_venta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        item_venta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_ventaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(item_venta);
-
-        jMenuBar1.add(jMenu3);
-
         jMenu4.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu4.setText("Consultas");
         jMenu4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -267,21 +266,6 @@ control_existencias ctrl = new control_existencias();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void item_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_ventaActionPerformed
-     String venta = JOptionPane.showInputDialog(this,"Ingrese el documento del cliente: ",JOptionPane.OK_OPTION);
-       if(ctrl.existe_L450(venta))
-       {
-        Interfaz_factura fact = new Interfaz_factura(ctrl);
-        jDesktopPane1.add(fact);
-        fact.show(); 
-       }
-       else
-       {
-              
-          JOptionPane.showMessageDialog(null,"El cliente no existe, debe registrarlo","Mensaje",JOptionPane.QUESTION_MESSAGE);  
-       }
-    }//GEN-LAST:event_item_ventaActionPerformed
-
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
     interfaz_consultas consulta = new interfaz_consultas();
     jDesktopPane1.add(consulta);
@@ -289,16 +273,11 @@ control_existencias ctrl = new control_existencias();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
-        jDesktopPane1.add(buscar);
-        buscar.show();
+    
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
 
-        Interfaz_Clientes cli = new Interfaz_Clientes();
-        jDesktopPane1.add(cli);
-        cli.show();
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
@@ -309,34 +288,16 @@ InterfazEntrada ent = new InterfazEntrada();
     }//GEN-LAST:event_EsregistrarActionPerformed
 
     private void El450ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_El450ActionPerformed
-        InterfazRL450 rl450 = new InterfazRL450();
-        jDesktopPane1.add(rl450);
-        rl450.show();
+     
   // TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_El450ActionPerformed
 
-    private void A13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A13ActionPerformed
-     
-        String serie = JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
-        System.out.println("Cadena:"+serie);
-       if(ctrl.existe_L450(serie))
-       {
-        InterfazL450 l450 = new InterfazL450(ctrl);
-        jDesktopPane1.add(l450);
-        l450.show(); 
-       } else if(ctrl.existe_X270(serie)){
-       InterfazX270 x270 = new InterfazX270(ctrl);
-        jDesktopPane1.add(x270);
-        x270.show();
-       }
-       else
-       {
-              
-          JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
-       }
+    private void AsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsigActionPerformed
+   equipoasig ();
+        
         // TODO add your handling code here:
-    }//GEN-LAST:event_A13ActionPerformed
+    }//GEN-LAST:event_AsigActionPerformed
 
     private void Ex270ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ex270ActionPerformed
    InterfazRX270 rx270 = new InterfazRX270();
@@ -346,9 +307,7 @@ InterfazEntrada ent = new InterfazEntrada();
     }//GEN-LAST:event_Ex270ActionPerformed
 
     private void El470ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_El470ActionPerformed
- InterfazRL470 rl470 = new InterfazRL470();
-        jDesktopPane1.add(rl470);
-        rl470.show();        // TODO add your handling code here:
+     // TODO add your handling code here:
     }//GEN-LAST:event_El470ActionPerformed
 
     private void E13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_E13ActionPerformed
@@ -358,9 +317,7 @@ InterfazEntrada ent = new InterfazEntrada();
     }//GEN-LAST:event_E13ActionPerformed
 
     private void EtinnyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EtinnyActionPerformed
- InterfazRTinny rTinny = new InterfazRTinny();
-        jDesktopPane1.add(rTinny);
-        rTinny.show();        // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_EtinnyActionPerformed
 
     private void EcpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EcpuActionPerformed
@@ -422,7 +379,7 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem A13;
+    private javax.swing.JMenuItem Asig;
     private javax.swing.JMenu Asignacion;
     private javax.swing.JMenuItem E13;
     private javax.swing.JMenuItem Earrendamiento;
@@ -435,12 +392,10 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
     private javax.swing.JMenuItem Etinny;
     private javax.swing.JMenuItem Ex270;
     private javax.swing.JMenuItem Lineas;
-    private javax.swing.JMenuItem item_venta;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

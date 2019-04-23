@@ -17,12 +17,12 @@ public class InterfazRMonitor extends javax.swing.JInternalFrame {
     control_existencias ctr = new control_existencias();
     public InterfazRMonitor() {
         initComponents();
-        mostrar_tabla();
+       // mostrar_tabla();
         
     }
               
     
-     public void mostrar_tabla(){
+   /**  public void mostrar_tabla(){
         control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
         String[] columnas = {"Serie","Status","Nombre","Correo","CPU","Comentarios","Serie anterior"};
         datostabla = control.consulta_clientes();

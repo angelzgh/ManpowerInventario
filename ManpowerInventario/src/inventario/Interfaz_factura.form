@@ -409,6 +409,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_formapagoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="desc_art">
     </Component>
