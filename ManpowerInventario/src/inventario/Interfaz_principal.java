@@ -58,8 +58,6 @@ control_existencias ctrl = new control_existencias();
         EnSal = new javax.swing.JMenu();
         Esregistrar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         El450 = new javax.swing.JMenuItem();
         Ex270 = new javax.swing.JMenuItem();
         El470 = new javax.swing.JMenuItem();
@@ -70,8 +68,6 @@ control_existencias ctrl = new control_existencias();
         Earrendamiento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Lineas = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -125,28 +121,6 @@ control_existencias ctrl = new control_existencias();
         jMenu1.setText("Equipos");
         jMenu1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem4.setText("Registrar");
-        jMenuItem4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem1.setText("Buscar clientes");
-        jMenuItem1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuItem1.setMaximumSize(new java.awt.Dimension(22767, 22767));
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
 
         El450.setText("L450");
         El450.addActionListener(new java.awt.event.ActionListener() {
@@ -229,23 +203,6 @@ control_existencias ctrl = new control_existencias();
 
         jMenuBar1.add(jMenu2);
 
-        jMenu4.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu4.setText("Consultas");
-        jMenu4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jMenu4.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem7.setText("Consulta facturas clientes");
-        jMenuItem7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem7);
-
-        jMenuBar1.add(jMenu4);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,21 +222,6 @@ control_existencias ctrl = new control_existencias();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-    interfaz_consultas consulta = new interfaz_consultas();
-    jDesktopPane1.add(consulta);
-    consulta.show();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-    
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void EsregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsregistrarActionPerformed
 InterfazEntrada ent = new InterfazEntrada();
@@ -396,10 +338,6 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }

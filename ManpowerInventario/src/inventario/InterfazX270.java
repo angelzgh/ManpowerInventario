@@ -498,8 +498,8 @@ control_existencias ctrl = new control_existencias();
                             .addComponent(jLabel6)
                             .addComponent(hostname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(bitlocker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -552,15 +552,16 @@ public static String convertTostring(Date Date)
     seriecambio="0";
     baja="0";
     fa = convertTostring(calendario.getDate());
-    int ic,iu,is,ir;
-    ic=Integer.parseInt(cc.getSelectedItem().toString());
-    iu=Integer.parseInt(udn.getSelectedItem().toString());
-    is=Integer.parseInt(statusE.getSelectedItem().toString());
-    ir=Integer.parseInt(responsable.getSelectedItem().toString());
+    String ic,iu,is,ir;
+    ic=cc.getSelectedItem().toString();
+    iu=udn.getSelectedItem().toString();
+    // Por si ocupo uno conversion is=Integer.parseInt(statusE.getSelectedItem().toString());
+    is=statusE.getSelectedItem().toString();
+    ir=responsable.getSelectedItem().toString();
         String carta="Pendiente";
-        if(!serie.equals("")||!nombre.equals("")||!noempleado.equals("")||!correo.equals("")||!jd.equals("")||!udn.getSelectedItem().equals("")||!cc.getSelectedItem().equals("")||!fa.equals("")||!hostname.equals("")||!bitlocker.equals("")||!responsable.getSelectedItem().equals("")||!statusE.getSelectedItem().equals(""))
+        if(!serie.equals("")&&!nombre.equals("")&&!noempleado.equals("")&&!correo.equals("")&&!jd.equals("")&&!udn.getSelectedItem().equals("")&&!cc.getSelectedItem().equals("")&&!fa.equals("")&&!hostname.equals("")&&!bitlocker.equals("")&&!responsable.getSelectedItem().equals("")&&!statusE.getSelectedItem().equals(""))
          {          
-        if( con.asignacion(null,serie.getText(),nombre.getText(),noempleado.getText(),correo.getText(),jd.getText(),iu,ic,fa,hostname.getText(),bitlocker.getText(),ir,seriecambio,baja,is) &&con.acualizarEquipo(ir,carta, serie.getText()))
+        if( con.asignacion(null,serie.getText(),nombre.getText(),noempleado.getText(),correo.getText(),jd.getText(),iu,ic,fa,hostname.getText(),bitlocker.getText(),ir,seriecambio,baja,is) &&con.acualizarEquipo(is,carta, serie.getText()))
         {            
             JOptionPane.showMessageDialog(null,"El equipo se asigno con exito");
             limpiar();
@@ -570,7 +571,16 @@ public static String convertTostring(Date Date)
          {
              JOptionPane.showMessageDialog(this, "Hay campos vacios obligatorios");  
          }
-
+nombre.setText("");
+noempleado.setText("");
+correo.setText("");
+jd.setText("");
+hostname.setText("");
+bitlocker.setText(""); 
+udn.setName("");
+cc.setName("");
+statusE.setName("");
+responsable.setName("");
     }//GEN-LAST:event_asignarActionPerformed
 
     private void hostnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostnameActionPerformed
@@ -691,7 +701,39 @@ Object[] unidad = con.combox("udn","idudn");
     }//GEN-LAST:event_tasignacionActionPerformed
 
     private void reasignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reasignarActionPerformed
-        // TODO add your handling code here:
+ String fa,sc,seriecambio,baja;
+    seriecambio="0";
+    baja="0";
+    fa = convertTostring(calendario.getDate());
+    String ic,iu,is,ir;
+    ic=cc.getSelectedItem().toString();
+    iu=udn.getSelectedItem().toString();
+    // Por si ocupo uno conversion is=Integer.parseInt(statusE.getSelectedItem().toString());
+    is=statusE.getSelectedItem().toString();
+    ir=responsable.getSelectedItem().toString();
+        String carta="Pendiente";
+        if(!serie.equals("")&&!nombre.equals("")&&!noempleado.equals("")&&!correo.equals("")&&!jd.equals("")&&!udn.getSelectedItem().equals("")&&!cc.getSelectedItem().equals("")&&!fa.equals("")&&!hostname.equals("")&&!bitlocker.equals("")&&!responsable.getSelectedItem().equals("")&&!statusE.getSelectedItem().equals(""))
+         {          
+        if( con.asignacion(null,serie.getText(),nombre.getText(),noempleado.getText(),correo.getText(),jd.getText(),iu,ic,fa,hostname.getText(),bitlocker.getText(),ir,seriecambio,baja,is) &&con.acualizarEquipo(is,carta, serie.getText()))
+        {            
+            JOptionPane.showMessageDialog(null,"El equipo se asigno con exito");
+            limpiar();
+        }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, asignación no realizada");}
+         }
+         else
+         {
+             JOptionPane.showMessageDialog(this, "Hay campos vacios obligatorios");  
+         }
+        nombre.setText("");
+noempleado.setText("");
+correo.setText("");
+jd.setText("");
+hostname.setText("");
+bitlocker.setText(""); 
+udn.setName("");
+cc.setName("");
+statusE.setName("");
+responsable.setName("");// TODO add your handling code here:
     }//GEN-LAST:event_reasignarActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
@@ -728,6 +770,9 @@ jlcc.setVisible(true);
 cc.setEnabled(true);
 jd.setEnabled(true);
 calendario.setEnabled(true);
+calendario.setVisible(true);
+jlcalendario.setVisible(true);
+jlcalendario.setEnabled(true);
 hostname.setEnabled(true);
 bitlocker.setEnabled(true);
 responsable.setEnabled(true);
@@ -738,6 +783,10 @@ correo.setText("");
 jd.setText("");
 hostname.setText("");
 bitlocker.setText(""); 
+udn.setName("");
+cc.setName("");
+statusE.setName("");
+responsable.setName("");
 Object[] stat = con.combox("status","idstatus");
         statusE.removeAllItems();
         for(int i=0;i<stat.length;i++)
