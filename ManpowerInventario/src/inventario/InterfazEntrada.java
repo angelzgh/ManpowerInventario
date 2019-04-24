@@ -16,6 +16,7 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
      */
    private Object[][] datostabla;    
     control_existencias ctr = new control_existencias();
+    control_existencias con;
     public InterfazEntrada() {
         initComponents();
     }
@@ -36,8 +37,8 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        asignar = new javax.swing.JButton();
-        aseriel = new javax.swing.JTextField();
+        registrar = new javax.swing.JButton();
+        serie = new javax.swing.JTextField();
         anoempleadol = new javax.swing.JTextField();
         acorreol = new javax.swing.JTextField();
         limpiar = new javax.swing.JButton();
@@ -45,11 +46,11 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         anombrel = new javax.swing.JTextField();
         calendario = new com.toedter.calendar.JDateChooser();
-        tipoequipo = new javax.swing.JComboBox();
+        tipo = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        tipoequipo1 = new javax.swing.JComboBox();
-        tipoequipo2 = new javax.swing.JComboBox();
+        marca = new javax.swing.JComboBox();
+        modelo = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -71,13 +72,13 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel8.setText("Fecha de registro");
 
-        asignar.setBackground(new java.awt.Color(255, 255, 255));
-        asignar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        asignar.setForeground(new java.awt.Color(102, 102, 102));
-        asignar.setText("Registrar");
-        asignar.addActionListener(new java.awt.event.ActionListener() {
+        registrar.setBackground(new java.awt.Color(255, 255, 255));
+        registrar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        registrar.setForeground(new java.awt.Color(102, 102, 102));
+        registrar.setText("Registrar");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asignarActionPerformed(evt);
+                registrarActionPerformed(evt);
             }
         });
 
@@ -98,10 +99,10 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
 
         calendario.setDateFormatString("yyyy/MM/d");
 
-        tipoequipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "------------", "Laptop", "CPU", "Monitor" }));
-        tipoequipo.addActionListener(new java.awt.event.ActionListener() {
+        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "------------", " " }));
+        tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoequipoActionPerformed(evt);
+                tipoActionPerformed(evt);
             }
         });
 
@@ -111,17 +112,17 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel14.setText("Marca");
 
-        tipoequipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "------------", "Lenovo", "Dell", "HP" }));
-        tipoequipo1.addActionListener(new java.awt.event.ActionListener() {
+        marca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "------------", " " }));
+        marca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoequipo1ActionPerformed(evt);
+                marcaActionPerformed(evt);
             }
         });
 
-        tipoequipo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "------------", "L450", "X270", "L440", "Tinny", "13", "Arrendamiento", " " }));
-        tipoequipo2.addActionListener(new java.awt.event.ActionListener() {
+        modelo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "------------" }));
+        modelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoequipo2ActionPerformed(evt);
+                modeloActionPerformed(evt);
             }
         });
 
@@ -141,7 +142,7 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
                         .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(asignar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -162,7 +163,7 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(49, 49, 49)
-                            .addComponent(aseriel, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(serie, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel9)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,9 +181,9 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel13)
                                     .addGap(59, 59, 59)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tipoequipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tipoequipo1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tipoequipo2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(marca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(modelo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(0, 88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,20 +191,20 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoequipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tipoequipo1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoequipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(aseriel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(serie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(anombrel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,7 +223,7 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
                     .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(asignar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(25, 25, 25))
@@ -235,29 +236,28 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asignarActionPerformed
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
 
-    private void tipoequipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoequipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipoequipoActionPerformed
+       // TODO add your handling code here:
+    }//GEN-LAST:event_registrarActionPerformed
 
-    private void tipoequipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoequipo1ActionPerformed
+    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tipoequipo1ActionPerformed
+    }//GEN-LAST:event_tipoActionPerformed
 
-    private void tipoequipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoequipo2ActionPerformed
+    private void marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tipoequipo2ActionPerformed
+    }//GEN-LAST:event_marcaActionPerformed
+
+    private void modeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modeloActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField acorreol;
     private javax.swing.JTextField anoempleadol;
     private javax.swing.JTextField anombrel;
-    private javax.swing.JTextField aseriel;
-    private javax.swing.JButton asignar;
     private com.toedter.calendar.JDateChooser calendario;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -270,8 +270,10 @@ public class InterfazEntrada extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JButton limpiar;
-    private javax.swing.JComboBox tipoequipo;
-    private javax.swing.JComboBox tipoequipo1;
-    private javax.swing.JComboBox tipoequipo2;
+    private javax.swing.JComboBox marca;
+    private javax.swing.JComboBox modelo;
+    private javax.swing.JButton registrar;
+    private javax.swing.JTextField serie;
+    private javax.swing.JComboBox tipo;
     // End of variables declaration//GEN-END:variables
 }

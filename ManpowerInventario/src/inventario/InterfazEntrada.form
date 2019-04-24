@@ -47,7 +47,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="asignar" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="registrar" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="limpiar" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -73,7 +73,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
-                          <Component id="aseriel" min="-2" pref="261" max="-2" attributes="0"/>
+                          <Component id="serie" min="-2" pref="261" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
@@ -98,9 +98,9 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="tipoequipo" max="32767" attributes="0"/>
-                              <Component id="tipoequipo1" max="32767" attributes="0"/>
-                              <Component id="tipoequipo2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tipo" max="32767" attributes="0"/>
+                              <Component id="marca" max="32767" attributes="0"/>
+                              <Component id="modelo" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -114,23 +114,23 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tipoequipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tipo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tipoequipo1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="marca" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tipoequipo2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="modelo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="37" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="aseriel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="serie" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -154,7 +154,7 @@
               </Group>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="asignar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="registrar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="limpiar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -196,7 +196,7 @@
         <Property name="text" type="java.lang.String" value="Fecha de registro"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="asignar">
+    <Component class="javax.swing.JButton" name="registrar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -210,10 +210,10 @@
         <Property name="text" type="java.lang.String" value="Registrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asignarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="aseriel">
+    <Component class="javax.swing.JTextField" name="serie">
     </Component>
     <Component class="javax.swing.JTextField" name="anoempleadol">
     </Component>
@@ -256,19 +256,17 @@
         <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/d"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="tipoequipo">
+    <Component class="javax.swing.JComboBox" name="tipo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="2">
             <StringItem index="0" value="------------"/>
-            <StringItem index="1" value="Laptop"/>
-            <StringItem index="2" value="CPU"/>
-            <StringItem index="3" value="Monitor"/>
+            <StringItem index="1" value=" "/>
           </StringArray>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoequipoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
@@ -287,38 +285,29 @@
         <Property name="text" type="java.lang.String" value="Marca"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="tipoequipo1">
+    <Component class="javax.swing.JComboBox" name="marca">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="2">
             <StringItem index="0" value="------------"/>
-            <StringItem index="1" value="Lenovo"/>
-            <StringItem index="2" value="Dell"/>
-            <StringItem index="3" value="HP"/>
+            <StringItem index="1" value=" "/>
           </StringArray>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoequipo1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="marcaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="tipoequipo2">
+    <Component class="javax.swing.JComboBox" name="modelo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="8">
+          <StringArray count="1">
             <StringItem index="0" value="------------"/>
-            <StringItem index="1" value="L450"/>
-            <StringItem index="2" value="X270"/>
-            <StringItem index="3" value="L440"/>
-            <StringItem index="4" value="Tinny"/>
-            <StringItem index="5" value="13"/>
-            <StringItem index="6" value="Arrendamiento"/>
-            <StringItem index="7" value=" "/>
           </StringArray>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoequipo2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modeloActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">

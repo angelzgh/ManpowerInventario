@@ -41,131 +41,130 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="noempleado" min="-2" pref="261" max="-2" attributes="0"/>
-                              </Group>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="noempleado" min="-2" pref="261" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="nombre" min="-2" pref="261" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="nombre" min="-2" pref="261" max="-2" attributes="0"/>
+                                  <Component id="jlstatus" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jlstatus" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="serie" min="-2" pref="261" max="-2" attributes="0"/>
-                                      <Component id="status" min="-2" pref="261" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jludn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlcc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="correo" max="32767" attributes="0"/>
-                                      <Component id="udn" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="cc" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jd" alignment="1" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                      <Component id="serieanterior" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tasignacion" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="serieant" alignment="1" min="-2" pref="261" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="serie" min="-2" pref="261" max="-2" attributes="0"/>
+                              <Component id="status" min="-2" pref="261" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jlsoporte1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="responsableE" min="-2" pref="261" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jludn" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jlcc" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jlstatus1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="statusE" min="-2" pref="261" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlcalendario" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="calendario" min="-2" pref="184" max="-2" attributes="0"/>
-                                  <Component id="hostname" min="-2" pref="261" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlsoporte" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="responsable" min="-2" pref="261" max="-2" attributes="0"/>
-                                  <Component id="bitlocker" min="-2" pref="261" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlfecha" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlcc1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jludn1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="udnE" min="-2" pref="261" max="-2" attributes="0"/>
-                                  <Component id="fecha" min="-2" pref="261" max="-2" attributes="0"/>
-                                  <Component id="ccE" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="correo" max="32767" attributes="0"/>
+                              <Component id="udn" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cc" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jd" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="corregir" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="reasignar" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="asignar" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="limpiar" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="81" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                              <Component id="serieanterior" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tasignacion" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="serieant" alignment="1" min="-2" pref="261" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jlsoporte1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="responsableE" min="-2" pref="261" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jlstatus1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="statusE" min="-2" pref="261" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlcalendario" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="calendario" min="-2" pref="184" max="-2" attributes="0"/>
+                          <Component id="hostname" min="-2" pref="261" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlsoporte" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="responsable" min="-2" pref="261" max="-2" attributes="0"/>
+                          <Component id="bitlocker" min="-2" pref="261" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jlfecha" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlcc1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jludn1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="udnE" min="-2" pref="261" max="-2" attributes="0"/>
+                          <Component id="fecha" min="-2" pref="261" max="-2" attributes="0"/>
+                          <Component id="ccE" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="cancelar" min="-2" pref="150" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="corregir" min="-2" pref="150" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="reasignar" min="-2" pref="150" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Component id="asignar" min="-2" pref="150" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="limpiar" min="-2" pref="150" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="81" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -288,13 +287,14 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="asignar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="limpiar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="reasignar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="corregir" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="cancelar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
           </Group>
@@ -393,16 +393,25 @@
     <Component class="javax.swing.JTextField" name="noempleado">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="correo"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="correo">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="jd"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="hostname">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="bitlocker"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hostnameActionPerformed"/>
@@ -411,6 +420,9 @@
     <Component class="javax.swing.JTextField" name="jd">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="udn"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="limpiar">
@@ -451,6 +463,10 @@
     <Component class="javax.swing.JTextField" name="nombre">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="focusCycleRoot" type="boolean" value="true"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="noempleado"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
@@ -464,6 +480,9 @@
     <Component class="javax.swing.JTextField" name="bitlocker">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="responsable"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bitlockerActionPerformed"/>
@@ -481,6 +500,9 @@
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/d"/>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="hostname"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="tasignacion">
@@ -545,6 +567,9 @@
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="calendario"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="udn">
@@ -558,6 +583,9 @@
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="cc"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="udnActionPerformed"/>
@@ -574,6 +602,9 @@
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="asignar"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="responsableActionPerformed"/>
@@ -702,6 +733,24 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Unidad de negocio"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="cancelar">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century Gothic" size="14" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cancelarMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

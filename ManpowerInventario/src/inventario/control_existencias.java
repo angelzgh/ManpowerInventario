@@ -150,6 +150,24 @@ public class control_existencias
        result = sen.datos_string("bitlocker", "select bitlocker from asignacion where equipo_serie="+nueva+";");
        return result;
      }
+    public String ingresa_tipo(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("tipo", "select tipo from equipo where serie="+nueva+";");
+       return result;
+     }
+    public String ingresa_marca(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("marca", "select marca from equipo where serie="+nueva+";");
+       return result;
+     }
+    public String ingresa_modelo(String nueva)
+     { 
+       String result;
+       result = sen.datos_string("modelo", "select modelo from equipo where serie="+nueva+";");
+       return result;
+     }
           public boolean update_factura(String factura, String total, String iva)
       {
           String campos[] = {total, iva,factura};           
@@ -169,7 +187,10 @@ public class control_existencias
      {
         return sen.poblar_combox(tabla, campo, "select "+campo+" from "+tabla+";");
      }
-     
+     public Object[] comboxE(String tabla, String campo,String serie)
+     {
+        return sen.poblar_combox(tabla, campo, "select "+campo+" from "+tabla+" where serie="+serie+";");
+     }
      
      public Object[][] datos_cliente(String id_cliente)
      {

@@ -21,7 +21,9 @@ control_existencias ctrl = new control_existencias();
         initComponents();
     }
     public void equipoasig (){
-    String serie = JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
+    String serie;
+        do{
+             serie= JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
         System.out.println("Cadena:"+"'"+serie+"'");
        if(ctrl.existe_equipoL450("'"+serie+"'"))
        {
@@ -38,6 +40,7 @@ control_existencias ctrl = new control_existencias();
               
           JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
        }
+        }while(!ctrl.existe_equipo("'"+serie+"'"));
         
     }
 
