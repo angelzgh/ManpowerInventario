@@ -22,15 +22,15 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
     }
               
     
-    /** public void mostrar_tabla(){
-        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
+       /** control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
+    public void mostrar_tabla(){
         String[] columnas = {"Serie","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta Responsiva","Comentarios","Serie anterior"};
         datostabla = control.consulta_clientes();
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
 
 
-}*/
+}+/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

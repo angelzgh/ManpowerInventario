@@ -71,13 +71,13 @@ control_existencias ctrl = new control_existencias();
         Earrendamiento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Lineas = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(1350, 650));
         setMinimumSize(new java.awt.Dimension(1350, 650));
         setPreferredSize(new java.awt.Dimension(1350, 650));
-        setResizable(false);
 
         jDesktopPane1.setBackground(java.awt.Color.lightGray);
         jDesktopPane1.setMaximumSize(new java.awt.Dimension(1350, 650));
@@ -206,6 +206,12 @@ control_existencias ctrl = new control_existencias();
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
+        jMenu3.setText("Garantias");
+        jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +233,7 @@ control_existencias ctrl = new control_existencias();
     }// </editor-fold>//GEN-END:initComponents
 
     private void EsregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EsregistrarActionPerformed
-InterfazEntrada ent = new InterfazEntrada();
+InterfazEntrada ent = new InterfazEntrada(ctrl);
         jDesktopPane1.add(ent);
         ent.show();         // TODO add your handling code here:
     }//GEN-LAST:event_EsregistrarActionPerformed
@@ -341,6 +347,7 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

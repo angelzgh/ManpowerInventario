@@ -17,9 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class InterfazX270 extends javax.swing.JInternalFrame {
 control_existencias ctrl = new control_existencias();
-    /**
-     * Creates new form InterfazL450
-     */
      control_existencias con;
      String itemSeleecionado;
     private Object [][] datostabla;
@@ -45,11 +42,10 @@ control_existencias ctrl = new control_existencias();
         corregir.setVisible(false);
         cancelar.setVisible(false);
                 this.con = con;
-        responsable.setName("");
-       statusE.setName("");
-       cc.setName(""); 
-       udn.setName("");
-       calendario.setName("");
+        responsable.removeAllItems();
+       statusE.removeAllItems();
+       cc.removeAllItems();
+       udn.removeAllItems();
         serie.setText( con.ingresa_serie() );
         
         
@@ -179,7 +175,7 @@ control_existencias ctrl = new control_existencias();
         limpiar.setBackground(new java.awt.Color(255, 255, 255));
         limpiar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         limpiar.setForeground(new java.awt.Color(102, 102, 102));
-        limpiar.setText("Limpiar");
+        limpiar.setText("Cambiar");
         limpiar.setEnabled(false);
         limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -557,17 +553,16 @@ control_existencias ctrl = new control_existencias();
     }// </editor-fold>//GEN-END:initComponents
 public void limpiar()
     {
-calendario.setDateFormatString("");
 nombre.setText("");
 noempleado.setText("");
 correo.setText("");
 jd.setText("");
 hostname.setText("");
 bitlocker.setText(""); 
-udn.setName("");
-cc.setName("");
-statusE.setName("");
-responsable.setName("");
+udn.removeAllItems();
+cc.removeAllItems();
+statusE.removeAllItems();
+responsable.removeAllItems();
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
@@ -695,6 +690,10 @@ bitlocker.setEnabled(true);
 responsable.setEnabled(true);
 statusE.setEditable(true);
 cancelar.setVisible(true);
+Date now = new Date(System.currentTimeMillis());
+SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+System.out.println(date.format(now));
+calendario.setDate(now);
 Object[] stat = con.combox("status","idstatus");
         statusE.removeAllItems();
         for(int i=0;i<stat.length;i++)
@@ -803,10 +802,13 @@ correo.setText("");
 jd.setText("");
 hostname.setText("");
 bitlocker.setText(""); 
-udn.setName("");
-cc.setName("");
-statusE.setName("");
-responsable.setName("");
+udn.removeAllItems();
+cc.removeAllItems();
+statusE.removeAllItems();
+responsable.removeAllItems();
+Date now = new Date(System.currentTimeMillis());
+SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+calendario.setDate(now);
 Object[] stat = con.combox("status","idstatus");
         statusE.removeAllItems();
         for(int i=0;i<stat.length;i++)
@@ -966,7 +968,6 @@ responsable.setEnabled(false);
         corregir.setVisible(false);
         cancelar.setVisible(false);
 tasignacion.setEnabled(true);
-limpiar();
 calendario.setEnabled(false);
 nombre.setEnabled(false);
 noempleado.setEnabled(false);
@@ -978,7 +979,8 @@ udn.setEnabled(false);
 cc.setEnabled(false);
 statusE.setEnabled(false);
 responsable.setEnabled(false);
-        serie.setText( con.ingresa_serie() );       // TODO add your handling code here:
+serie.setText( con.ingresa_serie() );  
+limpiar();// TODO add your handling code here:
     }//GEN-LAST:event_cancelarActionPerformed
 
 

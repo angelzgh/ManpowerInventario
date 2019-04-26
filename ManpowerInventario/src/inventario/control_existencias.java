@@ -12,43 +12,7 @@ public class control_existencias
 {
     
      private Sentencias_sql sen;
-     public String Documento;
-     private  String numero_factura="";
-
-    public String getNumero_factura() {
-        return numero_factura;
-    }
-
-    public void setNumero_factura(String numero_factura) {
-        this.numero_factura = numero_factura;
-    }
-
-    public String getId_cliente() {
-        return Documento;
-    }
-
-    public void setId_cliente(String id_cliente) {
-        this.Documento = Documento;
-    }
-     private String No_documento;
-
-    public String getId_proveedor() {
-        return No_documento;
-    }
-
-    public void setId_proveedor(String id_proveedor) {
-        this.No_documento = No_documento;
-    }
-
-    public String getId_articulo() {
-        return id_articulo;
-    }
-
-    public void setId_articulo(String id_articulo) {
-        this.id_articulo = id_articulo;
-    }
-     private String id_articulo;
-     
+     public String Documento;     
      public control_existencias()
      {
          sen = new Sentencias_sql();
@@ -168,19 +132,6 @@ public class control_existencias
        result = sen.datos_string("modelo", "select modelo from equipo where serie="+nueva+";");
        return result;
      }
-          public boolean update_factura(String factura, String total, String iva)
-      {
-          String campos[] = {total, iva,factura};           
-          return sen.insertar(campos, "update factura set total_factura=?, IVA=? where Nnm_factura=?;");
-      
-      }
-      
-      public boolean update_stock(String stock, String id_articulo)
-      {
-          String campos[] = {stock,id_articulo};           
-          return sen.insertar(campos, "update articulo set stock=stock+? where id_articulo=?;");
-      
-      }
      
      
      public Object[] combox(String tabla, String campo)
@@ -209,10 +160,24 @@ public class control_existencias
                                   
         
     }
+         public boolean entrada(String id,String remitente, String destinatario, String fecha, String serie, String motivo)
+    {               
+        
+            String[] columnas={id,remitente,destinatario,fecha,serie,motivo};
+            return sen.insertar(columnas, "insert into entrada values(?,?,?,?,?,?)");
+    }
        public boolean acualizarEquipo(String status_idstatus,String Cartar,String serie){
            String[] columnas={status_idstatus,Cartar};
         return sen.insertar(columnas, "update equipo set status_idstatus=? ,cartar=? where serie='"+serie+"';");
        
+       }
+       public boolean acualizarEntradas(String status_idstatus,String serie){
+           String[] columnas={status_idstatus};
+        return sen.insertar(columnas, "update equipo set status_idstatus=? where serie='"+serie+"';");
+       }
+       public boolean acualizarEntradaf(String fecha,String serie){
+           String[] columnas={fecha};
+        return sen.insertar(columnas, "update asignacion set fechaterm=?  where equipo_serie='"+serie+"';");
        }
         public boolean registrar_producto(String Nnm_factura,String id_articulo,String cantidad, String total)
         {
