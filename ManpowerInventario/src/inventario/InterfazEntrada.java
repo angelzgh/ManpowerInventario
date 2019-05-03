@@ -302,7 +302,7 @@ String fa,is;
     is=statusE.getSelectedItem().toString();
         if(!serie.equals("")&&!motivo.equals("")&&!des.equals("")&&!re.equals("")&&!guia.equals(""))
          {          
-        if( con.entrada(guia.getText(),re.getText(),des.getText(),fa,serie.getText(),motivo.getText())&&con.acualizarEntradas(is, serie.getText())&&con.acualizarEntradaf(fa, serie.getText()))
+        if( con.entrada(guia.getText(),re.getText(),des.getText(),fa,serie.getText(),motivo.getText())&&con.acualizarEntradas(is,motivo.getText(), serie.getText())&&con.acualizarEntradaf(fa, serie.getText()))
         {            
             JOptionPane.showMessageDialog(null,"Equipo registrado");
             limpiar();

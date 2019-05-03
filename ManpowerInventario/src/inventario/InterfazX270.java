@@ -969,6 +969,8 @@ responsable.setEnabled(false);
         cancelar.setVisible(false);
 tasignacion.setEnabled(true);
 calendario.setEnabled(false);
+calendario.setVisible(true);
+jlcalendario.setVisible(true);
 nombre.setEnabled(false);
 noempleado.setEnabled(false);
 correo.setEnabled(false);

@@ -171,9 +171,9 @@ public class control_existencias
         return sen.insertar(columnas, "update equipo set status_idstatus=? ,cartar=? where serie='"+serie+"';");
        
        }
-       public boolean acualizarEntradas(String status_idstatus,String serie){
-           String[] columnas={status_idstatus};
-        return sen.insertar(columnas, "update equipo set status_idstatus=? where serie='"+serie+"';");
+       public boolean acualizarEntradas(String status_idstatus,String comentarios,String serie){
+           String[] columnas={status_idstatus,comentarios};
+        return sen.insertar(columnas, "update equipo set status_idstatus=?, comentarios=? where serie='"+serie+"';");
        }
        public boolean acualizarEntradaf(String fecha,String serie){
            String[] columnas={fecha};
