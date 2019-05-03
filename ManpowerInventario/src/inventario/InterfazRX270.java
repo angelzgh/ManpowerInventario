@@ -17,20 +17,20 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
     control_existencias ctr = new control_existencias();
     public InterfazRX270() {
         initComponents();
-        //mostrar_tabla();
+        mostrar_tabla();
         
     }
               
     
-       /** control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
+       
     public void mostrar_tabla(){
-        String[] columnas = {"Serie","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta Responsiva","Comentarios","Serie anterior"};
-        datostabla = control.consulta_clientes();
+        control_equipo ctr;       
+        ctr = new control_equipo();
+        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        datostabla = ctr.consulta_equipo();
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
-
-
-}+/
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,11 +135,7 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buscarclienteKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    String[] columnas = {"Serie","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta"};
-        datostabla = ctr.datos_cliente(buscarcliente.getText());
-        DefaultTableModel datostcli = new DefaultTableModel(datostabla,columnas);
-        jTable1.setModel(datostcli);
-        buscarcliente.setText("");
+ 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

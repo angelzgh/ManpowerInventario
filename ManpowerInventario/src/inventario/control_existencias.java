@@ -143,12 +143,7 @@ public class control_existencias
         return sen.poblar_combox(tabla, campo, "select "+campo+" from "+tabla+" where serie="+serie+";");
      }
      
-     public Object[][] datos_cliente(String id_cliente)
-     {
-        String[] columnas={"Documento","Descripcion","Nombres","Apellidos","Direccion","Nombre_ciudad","Telefono"};
-        Object[][] resultado = sen.GetTabla(columnas, "cliente", "select * from cliente, ciudad, tipo_de_documento where id_tipo_documento=cod_tipo_documento and Codigo_ciudad=cod_ciudad and documento='"+id_cliente+"';");
-        return resultado;
-      }
+     
 
       
      

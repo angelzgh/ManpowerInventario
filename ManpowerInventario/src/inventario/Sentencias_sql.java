@@ -39,11 +39,11 @@ public class Sentencias_sql {
        return estado;
    }
     
-     public Object [][] GetTabla(String colName[], String tabla, String sql){
+     public Object [][] GetTabla(String colName[], String tabla,String tabla2, String sql){
       int registros = 0;
       
       try{
-         ps = con.conectado().prepareStatement("select count(*) as total from " + tabla);
+         ps = con.conectado().prepareStatement("select count(*) as total from " + tabla+ "," + tabla2);
          res = ps.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -51,6 +51,8 @@ public class Sentencias_sql {
       }catch(SQLException e){
          System.out.println(e);
       }
+     
+
 
     Object[][] data = new String[registros][colName.length];
     String col[] = new String[colName.length];

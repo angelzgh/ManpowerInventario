@@ -134,11 +134,11 @@ public class InterfazRMonitor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buscarclienteKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    String[] columnas = {"Serie","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta"};
+  /**  String[] columnas = {"Serie","Status","Nombre","Correo","Número de empleado","Unidad de Negocio","CC","Jefe Directo","Registró","Carta"};
         datostabla = ctr.datos_cliente(buscarcliente.getText());
         DefaultTableModel datostcli = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datostcli);
-        buscarcliente.setText("");
+        buscarcliente.setText("");*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
