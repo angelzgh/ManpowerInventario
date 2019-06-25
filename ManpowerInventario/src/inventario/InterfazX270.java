@@ -5,11 +5,11 @@
  */
 package inventario;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import inventario.Interfaz_principal;
 
 /**
  *
@@ -19,6 +19,7 @@ public class InterfazX270 extends javax.swing.JInternalFrame {
 control_existencias ctrl = new control_existencias();
      control_existencias con;
      String itemSeleecionado;
+     Interfaz_principal intp=new Interfaz_principal();
     private Object [][] datostabla;
     public InterfazX270(control_existencias con) {
         initComponents();
@@ -41,13 +42,11 @@ control_existencias ctrl = new control_existencias();
         ccE.setVisible(false);
         corregir.setVisible(false);
         cancelar.setVisible(false);
-                this.con = con;
+         this.con = con;
         responsable.removeAllItems();
        statusE.removeAllItems();
        cc.removeAllItems();
-       udn.removeAllItems();
-        serie.setText( con.ingresa_serie() );
-        
+       udn.removeAllItems();        
         
     }
 
@@ -154,6 +153,11 @@ control_existencias ctrl = new control_existencias();
 
         serie.setEditable(false);
         serie.setEnabled(false);
+        serie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serieActionPerformed(evt);
+            }
+        });
 
         noempleado.setEnabled(false);
         noempleado.setNextFocusableComponent(correo);
@@ -352,7 +356,7 @@ control_existencias ctrl = new control_existencias();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -587,9 +591,10 @@ public static String convertTostring(Date Date)
     is=statusE.getSelectedItem().toString();
     ir=responsable.getSelectedItem().toString();
         String carta="Pendiente";
+        String comentarios="";
         if(!serie.equals("")&&!nombre.equals("")&&!noempleado.equals("")&&!correo.equals("")&&!jd.equals("")&&!udn.getSelectedItem().equals("")&&!cc.getSelectedItem().equals("")&&!fa.equals("")&&!hostname.equals("")&&!bitlocker.equals("")&&!responsable.getSelectedItem().equals("")&&!statusE.getSelectedItem().equals(""))
          {          
-        if( con.asignacion(null,serie.getText(),nombre.getText(),noempleado.getText(),correo.getText(),jd.getText(),iu,ic,fa,hostname.getText(),bitlocker.getText(),ir,seriecambio,baja,is) &&con.acualizarEquipo(is,carta, serie.getText()))
+        if( con.asignacion(null,serie.getText(),nombre.getText(),noempleado.getText(),correo.getText(),jd.getText(),iu,ic,fa,hostname.getText(),bitlocker.getText(),ir,seriecambio,baja,is) &&con.acualizarEquipo(is,carta,comentarios, serie.getText()))
         {            
             JOptionPane.showMessageDialog(null,"El equipo se asigno con exito");
             limpiar();
@@ -739,9 +744,10 @@ Object[] unidad = con.combox("udn","idudn");
     is=statusE.getSelectedItem().toString();
     ir=responsable.getSelectedItem().toString();
         String carta="Pendiente";
+        String comentarios="";
         if(!serie.equals("")&&!nombre.equals("")&&!noempleado.equals("")&&!correo.equals("")&&!jd.equals("")&&!udn.getSelectedItem().equals("")&&!cc.getSelectedItem().equals("")&&!fa.equals("")&&!hostname.equals("")&&!bitlocker.equals("")&&!responsable.getSelectedItem().equals("")&&!statusE.getSelectedItem().equals(""))
          {          
-        if( con.asignacion(null,serie.getText(),nombre.getText(),noempleado.getText(),correo.getText(),jd.getText(),iu,ic,fa,hostname.getText(),bitlocker.getText(),ir,seriecambio,baja,is) &&con.acualizarEquipo(is,carta, serie.getText()))
+        if( con.asignacion(null,serie.getText(),nombre.getText(),noempleado.getText(),correo.getText(),jd.getText(),iu,ic,fa,hostname.getText(),bitlocker.getText(),ir,seriecambio,baja,is) &&con.acualizarEquipo(is,carta,comentarios, serie.getText()))
         {            
             JOptionPane.showMessageDialog(null,"El equipo se asigno con exito");
             limpiar();
@@ -985,6 +991,10 @@ serie.setText( con.ingresa_serie() );
 limpiar();// TODO add your handling code here:
     }//GEN-LAST:event_cancelarActionPerformed
 
+    private void serieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_serieActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton asignar;
@@ -1024,7 +1034,7 @@ limpiar();// TODO add your handling code here:
     private javax.swing.JButton reasignar;
     private javax.swing.JComboBox responsable;
     private javax.swing.JTextField responsableE;
-    private javax.swing.JTextField serie;
+    public javax.swing.JTextField serie;
     public javax.swing.JTextField serieant;
     private javax.swing.JLabel serieanterior;
     private javax.swing.JTextField status;

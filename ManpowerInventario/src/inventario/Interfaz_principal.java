@@ -22,18 +22,20 @@ control_existencias ctrl = new control_existencias();
     }
     public void equipoasig (){
     String serie;
+      InterfazX270 x270 = new InterfazX270(ctrl);
         do{
              serie= JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
         System.out.println("Cadena:"+"'"+serie+"'");
        if(ctrl.existe_equipoL450("'"+serie+"'"))
        {
-        InterfazL450 l450 = new InterfazL450(ctrl);
-        jDesktopPane1.add(l450);
-        l450.show(); 
-       } else if(ctrl.existe_equipoX270("'"+serie+"'")){
-       InterfazX270 x270 = new InterfazX270(ctrl);
         jDesktopPane1.add(x270);
         x270.show();
+        x270.setTitle("L450");
+        x270.serie.setText(serie.toUpperCase());
+       } else if(ctrl.existe_equipoX270("'"+serie+"'")){
+        jDesktopPane1.add(x270);
+        x270.show();
+        x270.serie.setText(serie.toUpperCase());
        }
        else
        {
@@ -41,7 +43,6 @@ control_existencias ctrl = new control_existencias();
           JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
        }
         }while(!ctrl.existe_equipo("'"+serie+"'"));
-        
     }
 
     /**
@@ -141,7 +142,7 @@ control_existencias ctrl = new control_existencias();
         });
         jMenu1.add(Ex270);
 
-        El470.setText("L470");
+        El470.setText("Comprados");
         El470.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 El470ActionPerformed(evt);

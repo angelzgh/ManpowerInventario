@@ -83,7 +83,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="El470">
               <Properties>
-                <Property name="text" type="java.lang.String" value="L470"/>
+                <Property name="text" type="java.lang.String" value="Comprados"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="El470ActionPerformed"/>

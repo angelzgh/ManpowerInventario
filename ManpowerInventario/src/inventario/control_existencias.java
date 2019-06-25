@@ -149,21 +149,22 @@ public class control_existencias
      
        public boolean asignacion(String id,String serie, String nombre, String noempleado, String correo, String jefe,String udn,String cc,String fechaasig,String hostname,String bitlocker,String soporte, String serieanterior, String fechabaja,String status)
     {               
-        
+        boolean insertar = false;
             String[] columnas={id,serie,nombre,noempleado,correo,jefe,udn,cc,fechaasig,hostname,bitlocker,soporte,serieanterior,fechabaja,status};
-            return sen.insertar(columnas, "insert into asignacion(idAsignacion,Equipo_Serie,Nombre,Noempleado,Correo,Jefe,UDN_idUDN,CC_idCC,fechaasig,Hostname,Bitlocker,Soporte_idSoporte,EquipoAnterior,Fechaterm,status_idStatus) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                                  
-        
+            insertar=sen.insertar(columnas, "insert into asignacion(idAsignacion,Equipo_Serie,Nombre,Noempleado,Correo,Jefe,UDN_idUDN,CC_idCC,fechaasig,Hostname,Bitlocker,Soporte_idSoporte,EquipoAnterior,Fechaterm,status_idStatus) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            System.out.println("Numero de id:"+id);
+            return insertar;                 
     }
+    
          public boolean entrada(String id,String remitente, String destinatario, String fecha, String serie, String motivo)
     {               
         
             String[] columnas={id,remitente,destinatario,fecha,serie,motivo};
             return sen.insertar(columnas, "insert into entrada values(?,?,?,?,?,?)");
     }
-       public boolean acualizarEquipo(String status_idstatus,String Cartar,String serie){
-           String[] columnas={status_idstatus,Cartar};
-        return sen.insertar(columnas, "update equipo set status_idstatus=? ,cartar=? where serie='"+serie+"';");
+       public boolean acualizarEquipo(String status_idstatus,String Cartar,String comentario,String serie){
+           String[] columnas={status_idstatus,Cartar,comentario};
+        return sen.insertar(columnas, "update equipo set status_idstatus=? ,cartar=?,comentarios=? where serie='"+serie+"';");
        
        }
        public boolean acualizarEntradas(String status_idstatus,String comentarios,String serie){
