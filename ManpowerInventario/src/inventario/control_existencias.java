@@ -143,7 +143,43 @@ public class control_existencias
         return sen.poblar_combox(tabla, campo, "select "+campo+" from "+tabla+" where serie="+serie+";");
      }
      
-     
+             public Object[][] buscadors(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm='0' and a.equipo_serie='"+busca+"' order by a.fechaasig;");
+        return resultado;
+      }
+             public Object[][] buscadoru(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm='0' and a.correo like '"+busca+"%' order by a.fechaasig;");
+        return resultado;
+      }
+             public Object[][] buscadorso(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm='0' and a.soporte_idsoporte='"+busca+"' order by a.fechaasig;");
+        return resultado;
+      } 
+  public Object[][] buscadorhistos(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm!='0' and a.equipo_serie='"+busca+"' order by a.fechaasig;");
+        return resultado;
+      } 
+  public Object[][] buscadorhistou(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm!='0' and a.correo like '"+busca+"%' order by a.fechaasig;");
+        return resultado;
+      }        
+public Object[][] buscadorhistoso(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm!='0' and a.soporte_idsoporte='"+busca+"' order by a.fechaasig;");
+        return resultado;
+      }
 
       
      

@@ -26,6 +26,7 @@ control_existencias ctrl = new control_existencias();
         do{
              serie= JOptionPane.showInputDialog(this,"Número de Serie: ",JOptionPane.OK_OPTION);
         System.out.println("Cadena:"+"'"+serie+"'");
+        
        if(ctrl.existe_equipoL450("'"+serie+"'"))
        {
         jDesktopPane1.add(x270);
@@ -42,7 +43,9 @@ control_existencias ctrl = new control_existencias();
               
           JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
        }
+if(serie.equals(JOptionPane.CANCEL_OPTION)){}        
         }while(!ctrl.existe_equipo("'"+serie+"'"));
+        
     }
 
     /**
@@ -73,6 +76,7 @@ control_existencias ctrl = new control_existencias();
         jMenu2 = new javax.swing.JMenu();
         Lineas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        garantias = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -92,8 +96,9 @@ control_existencias ctrl = new control_existencias();
         jDesktopPane1.add(jLabel2);
         jLabel2.setBounds(0, 0, 1350, 650);
 
-        Asignacion.setText("Asignación/Cambio");
+        Asignacion.setText("Asignación");
         Asignacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        Asignacion.setMaximumSize(new java.awt.Dimension(130, 32767));
         Asignacion.setPreferredSize(new java.awt.Dimension(180, 50));
 
         Asig.setText("Nueva");
@@ -211,6 +216,15 @@ control_existencias ctrl = new control_existencias();
         jMenu3.setText("Garantias");
         jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
+
+        garantias.setText("Equipos");
+        garantias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                garantiasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(garantias);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -296,6 +310,12 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
         rlineas.show();        // TODO add your handling code here:
     }//GEN-LAST:event_LineasActionPerformed
 
+    private void garantiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garantiasActionPerformed
+InterfazGarantia gar = new InterfazGarantia(ctrl);
+        jDesktopPane1.add(gar);
+        gar.show();       // TODO add your handling code here:
+    }//GEN-LAST:event_garantiasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -344,6 +364,7 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
     private javax.swing.JMenuItem Etinny;
     private javax.swing.JMenuItem Ex270;
     private javax.swing.JMenuItem Lineas;
+    private javax.swing.JMenuItem garantias;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

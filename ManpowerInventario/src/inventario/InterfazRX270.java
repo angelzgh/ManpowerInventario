@@ -4,6 +4,7 @@
  */
 package inventario;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,15 +13,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InterfazRX270 extends javax.swing.JInternalFrame {
 
-   
+  
     private Object[][] datostabla;    
+      
     control_existencias ctr = new control_existencias();
     public InterfazRX270() {
         initComponents();
-        mostrar_tablaasignados();
-        
+        filtrohis.setVisible(false);
+         mostrar_tablaasignados();
     }
-              
     
        
     public void mostrar_tablahistorial(){
@@ -68,12 +69,16 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        buscarcliente = new javax.swing.JTextField();
+        buscar = new javax.swing.JTextField();
         asignados = new javax.swing.JButton();
         enbodega = new javax.swing.JButton();
         dañados = new javax.swing.JButton();
         garantia = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        filtro = new javax.swing.JComboBox<>();
+        filtrohis = new javax.swing.JComboBox<>();
+        eliminar = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -107,14 +112,14 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
             }
         });
 
-        buscarcliente.addActionListener(new java.awt.event.ActionListener() {
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarclienteActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
-        buscarcliente.addKeyListener(new java.awt.event.KeyAdapter() {
+        buscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                buscarclienteKeyReleased(evt);
+                buscarKeyReleased(evt);
             }
         });
 
@@ -153,21 +158,45 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setText("Buscar por:");
+
+        filtro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Serie", "Usuario", "Soporte", "Historial" }));
+        filtro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroActionPerformed(evt);
+            }
+        });
+
+        filtrohis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Serie", "Usuario", "Soporte" }));
+
+        eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1195, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(filtrohis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(filtro, 0, 101, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1195, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(asignados)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(enbodega)
@@ -177,28 +206,40 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
                                 .addComponent(garantia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
                     .addComponent(asignados)
                     .addComponent(enbodega)
                     .addComponent(dañados)
                     .addComponent(garantia)
-                    .addComponent(jButton3))
-                .addGap(4, 4, 4)
-                .addComponent(jButton1))
+                    .addComponent(jButton3)
+                    .addComponent(jLabel1)
+                    .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(filtrohis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eliminar)
+                        .addContainerGap())))
         );
 
         pack();
@@ -208,16 +249,67 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
     this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void buscarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarclienteActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
     
-    }//GEN-LAST:event_buscarclienteActionPerformed
+    }//GEN-LAST:event_buscarActionPerformed
 
-    private void buscarclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarclienteKeyReleased
+    private void buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyReleased
    
-    }//GEN-LAST:event_buscarclienteKeyReleased
+    }//GEN-LAST:event_buscarKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
- 
+String itemSeleecionado;
+        itemSeleecionado= (String)filtro.getSelectedItem();
+        if ("Serie".equals(itemSeleecionado)) {
+        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        datostabla = ctr.buscadors(buscar.getText());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+        buscar.setText("");
+}else if ("Usuario".equals(itemSeleecionado)) {
+
+        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        datostabla = ctr.buscadoru(buscar.getText());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+        buscar.setText("");
+    }
+else if ("Soporte".equals(itemSeleecionado)) {
+
+        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        datostabla = ctr.buscadorso(buscar.getText());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+        buscar.setText("");
+    }
+else if ("Historial".equals(itemSeleecionado)) {
+        filtrohis.setVisible(false);
+            String itemSeleecionadoh;
+        itemSeleecionadoh = (String)filtrohis.getSelectedItem();
+        if ("Serial".equals(itemSeleecionadoh)) {
+        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        datostabla = ctr.buscadorhistos(buscar.getText());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+        buscar.setText("");
+        }else if("Usuario".equals(itemSeleecionadoh)) {
+        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        datostabla = ctr.buscadorhistou(buscar.getText());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+        buscar.setText("");
+        }else if("Soporte".equals(itemSeleecionadoh)) {
+        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        datostabla = ctr.buscadorhistoso(buscar.getText());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+        buscar.setText("");
+        }
+    }
+else{
+JOptionPane.showMessageDialog(null,"Filtro equivocado");
+}  
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void enbodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enbodegaActionPerformed
@@ -240,15 +332,33 @@ mostrar_tabladañado();        // TODO add your handling code here:
 mostrar_tablaasignados();        // TODO add your handling code here:
     }//GEN-LAST:event_asignadosActionPerformed
 
+    private void filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroActionPerformed
+String itemSeleecionado;
+        itemSeleecionado= (String)filtro.getSelectedItem();
+        if ("Historial".equals(itemSeleecionado)) {
+        filtrohis.setVisible(true);} 
+        else{
+        filtrohis.setVisible(false); 
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_filtroActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton asignados;
-    private javax.swing.JTextField buscarcliente;
+    private javax.swing.JTextField buscar;
     private javax.swing.JButton dañados;
+    private javax.swing.JButton eliminar;
     private javax.swing.JButton enbodega;
+    private javax.swing.JComboBox<String> filtro;
+    private javax.swing.JComboBox<String> filtrohis;
     private javax.swing.JButton garantia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
