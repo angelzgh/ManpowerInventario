@@ -6,13 +6,15 @@ package inventario;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 
 public class control_existencias 
 {
     
      private Sentencias_sql sen;
-     public String Documento;     
+     public String Documento;   
+     
      public control_existencias()
      {
          sen = new Sentencias_sql();
@@ -142,6 +144,25 @@ public class control_existencias
      {
         return sen.poblar_combox(tabla, campo, "select "+campo+" from "+tabla+" where serie="+serie+";");
      }
+            
+     public String statusbdg(String serie){
+         String status = null;
+         String tabla; 
+         if(existe_equipo("'"+serie+"'")){
+             tabla=sen.status(serie);
+             if (tabla.equals("Asignado")){
+             status="1";
+             }else if(tabla.equals("En bodega")){
+             status="2";
+             }else if(tabla.equals("Dañado")){
+             status="3";
+             }else if(tabla.equals("Garantia")){
+             status="4";
+             }}else{
+             JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
+             }
+                     return status;
+                     }
      
              public Object[][] buscadors(String busca)
      {
@@ -162,10 +183,29 @@ public class control_existencias
         Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm='0' and a.soporte_idsoporte='"+busca+"' order by a.fechaasig;");
         return resultado;
       } 
+             
+             public Object[][] buscadorsbdg(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Comentarios"};
+        Object[][] resultado = sen.GetTabla1(columnas,"equipo", "select e.serie,e.status_idstatus,e.comentarios from equipo e where e.serie like '"+"PC0SU"+"%' and e.serie='"+busca+"';");
+        return resultado;
+      }
+             public Object[][] buscadorubdg(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Comentarios"};
+        Object[][] resultado = sen.GetTabla(columnas,"asignacion", "equipo", "select e.serie,e.status_idstatus,e.comentarios from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm='0' and a.equipo_serie='"+busca+"' order by a.fechaasig;");
+        return resultado;
+      }
+             public Object[][] buscadorsobdg(String busca)
+     {
+        String[] columnas={"Serie","Status_idstatus","Comentarios"};
+        Object[][] resultado = sen.GetTabla(columnas,"asignacion", "equipo", "select e.serie,e.status_idstatus,e.comentarios from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm='0' and a.equipo_serie='"+busca+"' order by a.fechaasig;");
+        return resultado;
+      } 
   public Object[][] buscadorhistos(String busca)
      {
         String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
-        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm!='0' and a.equipo_serie='"+busca+"' order by a.fechaasig;");
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.equipo_serie='"+busca+"' order by a.fechaasig;");
         return resultado;
       } 
   public Object[][] buscadorhistou(String busca)
@@ -198,6 +238,13 @@ public Object[][] buscadorhistoso(String busca)
             String[] columnas={id,remitente,destinatario,fecha,serie,motivo};
             return sen.insertar(columnas, "insert into entrada values(?,?,?,?,?,?)");
     }
+         public boolean bdg(String id,String serie, String nombre, String noempleado, String correo, String jefe,String udn,String cc,String fechaasig,String hostname,String bitlocker,String soporte, String serieanterior, String fechabaja,String status)
+    {               
+        
+            String[] columnas={id,serie,nombre,noempleado,correo,jefe,udn,cc,fechaasig,hostname,bitlocker,soporte,serieanterior,fechabaja,status};
+            return sen.insertar(columnas, "insert into bdg(idbdg,Equipo_Serie,Nombre,Noempleado,Correo,Jefe,UDN_idUDN,CC_idCC,fechaasig,Hostname,Bitlocker,Soporte_idSoporte,EquipoAnterior,Fechaterm,status_idStatus) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    }
+         
        public boolean acualizarEquipo(String status_idstatus,String Cartar,String comentario,String serie){
            String[] columnas={status_idstatus,Cartar,comentario};
         return sen.insertar(columnas, "update equipo set status_idstatus=? ,cartar=?,comentarios=? where serie='"+serie+"';");

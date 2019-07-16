@@ -19,6 +19,19 @@ control_existencias ctrl = new control_existencias();
      */
     public Interfaz_principal() {
         initComponents();
+        
+    }
+    public void tipo(){
+        if(El450.isArmed()){
+    InterfazRX270 rx270 = new InterfazRX270();
+        jDesktopPane1.add(rx270);
+        rx270.show();
+        rx270.setTitle("Registro L450");
+        }else if(Ex270.isArmed()){
+        InterfazRX270 rx270 = new InterfazRX270();
+        jDesktopPane1.add(rx270);
+        rx270.show();
+        }
     }
     public void equipoasig (){
     String serie;
@@ -33,10 +46,12 @@ control_existencias ctrl = new control_existencias();
         x270.show();
         x270.setTitle("L450");
         x270.serie.setText(serie.toUpperCase());
+       
        } else if(ctrl.existe_equipoX270("'"+serie+"'")){
         jDesktopPane1.add(x270);
         x270.show();
         x270.serie.setText(serie.toUpperCase());
+       
        }
        else
        {
@@ -64,7 +79,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         Asig = new javax.swing.JMenuItem();
         EnSal = new javax.swing.JMenu();
         Esregistrar = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        Equipomen = new javax.swing.JMenu();
         El450 = new javax.swing.JMenuItem();
         Ex270 = new javax.swing.JMenuItem();
         El470 = new javax.swing.JMenuItem();
@@ -77,6 +92,8 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         Lineas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         garantias = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        garantias1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -126,10 +143,10 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
 
         jMenuBar1.add(EnSal);
 
-        jMenu1.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu1.setText("Equipos");
-        jMenu1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jMenu1.setPreferredSize(new java.awt.Dimension(100, 50));
+        Equipomen.setBorder(new javax.swing.border.MatteBorder(null));
+        Equipomen.setText("Equipos");
+        Equipomen.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        Equipomen.setPreferredSize(new java.awt.Dimension(100, 50));
 
         El450.setText("L450");
         El450.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +154,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 El450ActionPerformed(evt);
             }
         });
-        jMenu1.add(El450);
+        Equipomen.add(El450);
 
         Ex270.setText("X270");
         Ex270.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +162,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 Ex270ActionPerformed(evt);
             }
         });
-        jMenu1.add(Ex270);
+        Equipomen.add(Ex270);
 
         El470.setText("Comprados");
         El470.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +170,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 El470ActionPerformed(evt);
             }
         });
-        jMenu1.add(El470);
+        Equipomen.add(El470);
 
         E13.setText("13");
         E13.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +178,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 E13ActionPerformed(evt);
             }
         });
-        jMenu1.add(E13);
+        Equipomen.add(E13);
 
         Etinny.setText("Tinny");
         Etinny.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +186,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 EtinnyActionPerformed(evt);
             }
         });
-        jMenu1.add(Etinny);
+        Equipomen.add(Etinny);
 
         Ecpu.setText("CPU");
         Ecpu.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +194,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 EcpuActionPerformed(evt);
             }
         });
-        jMenu1.add(Ecpu);
+        Equipomen.add(Ecpu);
 
         Emonitor.setText("Monitor");
         Emonitor.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +202,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 EmonitorActionPerformed(evt);
             }
         });
-        jMenu1.add(Emonitor);
+        Equipomen.add(Emonitor);
 
         Earrendamiento.setText("Arrendamiento");
         Earrendamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -193,9 +210,9 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 EarrendamientoActionPerformed(evt);
             }
         });
-        jMenu1.add(Earrendamiento);
+        Equipomen.add(Earrendamiento);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(Equipomen);
 
         jMenu2.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu2.setText("Lineas telefonicas");
@@ -215,6 +232,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu3.setText("Garantias");
         jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jMenu3.setMaximumSize(new java.awt.Dimension(100, 32767));
         jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
 
         garantias.setText("Equipos");
@@ -226,6 +244,21 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         jMenu3.add(garantias);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setBorder(new javax.swing.border.MatteBorder(null));
+        jMenu4.setText("Reportes");
+        jMenu4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jMenu4.setPreferredSize(new java.awt.Dimension(100, 50));
+
+        garantias1.setText("Generar reporte");
+        garantias1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                garantias1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(garantias1);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -254,7 +287,9 @@ InterfazEntrada ent = new InterfazEntrada(ctrl);
     }//GEN-LAST:event_EsregistrarActionPerformed
 
     private void El450ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_El450ActionPerformed
-     
+
+        tipo();
+
   // TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_El450ActionPerformed
@@ -266,9 +301,8 @@ InterfazEntrada ent = new InterfazEntrada(ctrl);
     }//GEN-LAST:event_AsigActionPerformed
 
     private void Ex270ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ex270ActionPerformed
-   InterfazRX270 rx270 = new InterfazRX270();
-        jDesktopPane1.add(rx270);
-        rx270.show();
+
+        tipo();
         // TODO add your handling code here:
     }//GEN-LAST:event_Ex270ActionPerformed
 
@@ -316,6 +350,12 @@ InterfazGarantia gar = new InterfazGarantia(ctrl);
         gar.show();       // TODO add your handling code here:
     }//GEN-LAST:event_garantiasActionPerformed
 
+    private void garantias1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garantias1ActionPerformed
+InterfazReportes rep = new InterfazReportes(ctrl);
+        jDesktopPane1.add(rep);
+        rep.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_garantias1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -356,20 +396,22 @@ InterfazGarantia gar = new InterfazGarantia(ctrl);
     private javax.swing.JMenuItem E13;
     private javax.swing.JMenuItem Earrendamiento;
     private javax.swing.JMenuItem Ecpu;
-    private javax.swing.JMenuItem El450;
+    public javax.swing.JMenuItem El450;
     private javax.swing.JMenuItem El470;
     private javax.swing.JMenuItem Emonitor;
     private javax.swing.JMenu EnSal;
+    private javax.swing.JMenu Equipomen;
     private javax.swing.JMenuItem Esregistrar;
     private javax.swing.JMenuItem Etinny;
-    private javax.swing.JMenuItem Ex270;
+    public javax.swing.JMenuItem Ex270;
     private javax.swing.JMenuItem Lineas;
     private javax.swing.JMenuItem garantias;
+    private javax.swing.JMenuItem garantias1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

@@ -298,21 +298,19 @@ public static String convertTostring(Date Date)
         }
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
 String fa,is;
+     String bdg=" ";
     fa = convertTostring(calendario.getDate());
     is=statusE.getSelectedItem().toString();
-        if(!serie.equals("")&&!motivo.equals("")&&!des.equals("")&&!re.equals("")&&!guia.equals(""))
+        if(serie.equals("")||motivo.equals("")||des.equals("")||re.equals("")||guia.equals(""))
          {          
-        if( con.entrada(guia.getText(),re.getText(),des.getText(),fa,serie.getText(),motivo.getText())&&con.acualizarEntradas(is,motivo.getText(), serie.getText())&&con.acualizarEntradaf(fa, serie.getText()))
-        {            
+            JOptionPane.showMessageDialog(null, "Hay campos vacios obligatorios"); 
+         }else if( con.entrada(guia.getText(),re.getText(),des.getText(),fa,serie.getText(),motivo.getText())&&con.acualizarEntradas(is,motivo.getText(), serie.getText())&&con.acualizarEntradaf(fa, serie.getText()))
+         {          
             JOptionPane.showMessageDialog(null,"Equipo registrado");
             limpiar();
             registrar.setVisible(false);
-        }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");}
-         }
-         else
-         {
-             JOptionPane.showMessageDialog(null, "Hay campos vacios obligatorios");  
-         }
+        }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");} 
+         
 // TODO add your handling code here:
     }//GEN-LAST:event_registrarActionPerformed
 

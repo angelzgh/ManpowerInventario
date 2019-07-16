@@ -125,7 +125,7 @@ control_existencias ctrl = new control_existencias();
         jScrollPane1.setViewportView(motivo);
 
         statusE.setEditable(true);
-        statusE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Asignado", "Dañado" }));
+        statusE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Asignado", "Dañado", "En bodega" }));
         statusE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statusEActionPerformed(evt);

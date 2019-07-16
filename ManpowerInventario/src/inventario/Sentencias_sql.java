@@ -147,7 +147,19 @@ public class Sentencias_sql {
     }
     return datos;
     }
-     
+     public String status(String serie) {
+String status = null;
+         try{
+         ps = con.conectado().prepareStatement("SELECT status_idstatus from equipo where serie='"+serie+"';");
+         res = ps.executeQuery();
+         res.next();
+         status = res.getString(1);
+         res.close();
+      }catch(SQLException e){
+         System.out.println(e);
+      }
+return status;
+}
      public Object[] poblar_combox(String tabla, String nombrecol, String sql){
       int registros = 0;      
       try{

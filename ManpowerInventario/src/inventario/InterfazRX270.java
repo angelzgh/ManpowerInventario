@@ -4,9 +4,10 @@
  */
 package inventario;
 
+import static javax.swing.Action.NAME;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import inventario.Interfaz_principal;
 /**
  *
  * @author ANDRES
@@ -17,42 +18,57 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
     private Object[][] datostabla;    
       
     control_existencias ctr = new control_existencias();
+    control_equipo ctre= new control_equipo();
+    Interfaz_principal inp= new Interfaz_principal();
+    
+      
     public InterfazRX270() {
         initComponents();
-        filtrohis.setVisible(false);
-         mostrar_tablaasignados();
     }
-    
+
+    public String mostrar(){
+String p= null;
+        if(this.title.equals("Registro L450")){
+        p="PF0E";
+        }else if(this.title.equals("Registro X270")){
+        p="PC0SU";
+        }
+        return p;
+}    
+      public void mostrar_tablaasignados(){
+        
+        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        datostabla = ctre.consulta_equipoasignados(mostrar());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+    }
        
     public void mostrar_tablahistorial(){
-        control_equipo ctr;       
-        ctr = new control_equipo();
+        
         String[] columnas = {"Serie","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
-        datostabla = ctr.consulta_equipohisto();
+        datostabla = ctre.consulta_equipohisto(mostrar());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
     }
-    public void mostrar_tablaasignados(){
-        control_equipo ctr;       
-        ctr = new control_equipo();
-        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
-        datostabla = ctr.consulta_equipoasignados();
-        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
-        jTable1.setModel(datos);
-    }
+  
     public void mostrar_tablaenbodega(){
-        control_equipo ctr;       
-        ctr = new control_equipo();
+        
         String[] columnas = {"Serie","Status","Comentarios"};
-        datostabla = ctr.consulta_equipobodega();
+        datostabla = ctre.consulta_equipobodega(mostrar());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
     }
     public void mostrar_tabladañado(){
-        control_equipo ctr;       
-        ctr = new control_equipo();
+
         String[] columnas = {"Serie","Status","Comentarios"};
-        datostabla = ctr.consulta_equipodañado();
+        datostabla = ctre.consulta_equipodañado(mostrar());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);  
+    }
+     public void mostrar_tablagarantia(){
+
+        String[] columnas = {"Serie","Status","Comentarios"};
+        datostabla = ctre.consulta_equipogarantia(mostrar());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
     }
@@ -168,6 +184,11 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
         });
 
         filtrohis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Serie", "Usuario", "Soporte" }));
+        filtrohis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtrohisActionPerformed(evt);
+            }
+        });
 
         eliminar.setText("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +204,9 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1195, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1172, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -217,7 +240,7 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(asignados)
@@ -259,13 +282,19 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 String itemSeleecionado;
+
+String status=ctr.statusbdg(buscar.getText());
         itemSeleecionado= (String)filtro.getSelectedItem();
-        if ("Serie".equals(itemSeleecionado)) {
+        if(ctr.existe_equipo("'"+status+"'")){
+        if ("Serie".equals(itemSeleecionado)&&status.equals("1")) {
         String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
         datostabla = ctr.buscadors(buscar.getText());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
         buscar.setText("");
+        }else{
+JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);          
+        }
 }else if ("Usuario".equals(itemSeleecionado)) {
 
         String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
@@ -281,12 +310,23 @@ else if ("Soporte".equals(itemSeleecionado)) {
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
         buscar.setText("");
-    }
-else if ("Historial".equals(itemSeleecionado)) {
+        }else if(ctr.existe_equipo("'"+status+"'")){
+        if(status.equals("3")||status.equals("2")||status.equals("4")){        
+        if ("Serie".equals(itemSeleecionado)) {
+        String[] columnas = {"Serie","Status","Comentarios"};
+        datostabla = ctr.buscadorsbdg(buscar.getText());
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+        buscar.setText("");
+}
+        }}else{
+        JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
+        }
+if ("Historial".equals(itemSeleecionado)) {
         filtrohis.setVisible(false);
             String itemSeleecionadoh;
         itemSeleecionadoh = (String)filtrohis.getSelectedItem();
-        if ("Serial".equals(itemSeleecionadoh)) {
+        if ("Serie".equals(itemSeleecionadoh)) {
         String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
         datostabla = ctr.buscadorhistos(buscar.getText());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
@@ -305,10 +345,9 @@ else if ("Historial".equals(itemSeleecionado)) {
         jTable1.setModel(datos);
         buscar.setText("");
         }
-    }
-else{
-JOptionPane.showMessageDialog(null,"Filtro equivocado");
-}  
+    }else{
+JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
+} 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -317,7 +356,7 @@ mostrar_tablaenbodega();        // TODO add your handling code here:
     }//GEN-LAST:event_enbodegaActionPerformed
 
     private void garantiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garantiaActionPerformed
-        // TODO add your handling code here:
+mostrar_tablagarantia();        // TODO add your handling code here:
     }//GEN-LAST:event_garantiaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -345,6 +384,10 @@ String itemSeleecionado;
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eliminarActionPerformed
+
+    private void filtrohisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrohisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtrohisActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton asignados;
