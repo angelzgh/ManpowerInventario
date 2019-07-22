@@ -33,7 +33,7 @@ public class control_existencias
          
         this.Documento = cod;
       
-        return sen.existencias(cod," from Equipo where serie like '"+"PC0SU"+"%' and serie="+cod+";");
+        return sen.existencias(cod," from Equipo where serie like '"+"PC0SU"+"%' and serie like "+cod+" ;");
       
     }
    public boolean existe_equipo( String cod)
@@ -44,6 +44,23 @@ public class control_existencias
         return sen.existencias(cod," from Equipo where serie="+cod+";");
       
     }
+   public boolean existe_usuario( String cod)
+     {
+         
+        this.Documento = cod;
+      
+        return sen.existencias(cod," from Asignacion where correo like "+cod+" ;");
+      
+    }
+    public boolean existe_soporte( String cod)
+     {
+         
+        this.Documento = cod;
+      
+        return sen.existencias(cod," from Asignacion where soporte_idsoporte="+cod+";");
+      
+    }
+   
      
      public String ingresa_serie()
      { 
@@ -147,8 +164,8 @@ public class control_existencias
             
      public String statusbdg(String serie){
          String status = null;
-         String tabla; 
-         if(existe_equipo("'"+serie+"'")){
+         String tabla;
+         if(existe_equipoX270("'%"+serie+"'")){
              tabla=sen.status(serie);
              if (tabla.equals("Asignado")){
              status="1";
@@ -158,16 +175,15 @@ public class control_existencias
              status="3";
              }else if(tabla.equals("Garantia")){
              status="4";
-             }}else{
-             JOptionPane.showMessageDialog(null,"El equipo no se encuentra registrado o el número de serie es incorrecto","Mensaje",JOptionPane.QUESTION_MESSAGE);  
              }
+         }else{}
                      return status;
                      }
      
              public Object[][] buscadors(String busca)
      {
         String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
-        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm='0' and a.equipo_serie='"+busca+"' order by a.fechaasig;");
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm='0' and a.equipo_serie like '%"+busca+"' order by a.fechaasig;");
         return resultado;
       }
              public Object[][] buscadoru(String busca)
@@ -187,7 +203,7 @@ public class control_existencias
              public Object[][] buscadorsbdg(String busca)
      {
         String[] columnas={"Serie","Status_idstatus","Comentarios"};
-        Object[][] resultado = sen.GetTabla1(columnas,"equipo", "select e.serie,e.status_idstatus,e.comentarios from equipo e where e.serie like '"+"PC0SU"+"%' and e.serie='"+busca+"';");
+        Object[][] resultado = sen.GetTabla1(columnas,"equipo", "select e.serie,e.status_idstatus,e.comentarios from equipo e where e.serie like '"+"PC0SU"+"%' and e.serie like '%"+busca+"';");
         return resultado;
       }
              public Object[][] buscadorubdg(String busca)
@@ -205,7 +221,7 @@ public class control_existencias
   public Object[][] buscadorhistos(String busca)
      {
         String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
-        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.equipo_serie='"+busca+"' order by a.fechaasig;");
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.equipo_serie like '%"+busca+"' order by a.fechaasig;");
         return resultado;
       } 
   public Object[][] buscadorhistou(String busca)

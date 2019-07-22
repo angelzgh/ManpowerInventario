@@ -91,6 +91,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         jMenu2 = new javax.swing.JMenu();
         Lineas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        garantias2 = new javax.swing.JMenuItem();
         garantias = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         garantias1 = new javax.swing.JMenuItem();
@@ -235,7 +236,15 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         jMenu3.setMaximumSize(new java.awt.Dimension(100, 32767));
         jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        garantias.setText("Equipos");
+        garantias2.setText("Status");
+        garantias2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                garantias2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(garantias2);
+
+        garantias.setText("Salida de equipos");
         garantias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 garantiasActionPerformed(evt);
@@ -356,6 +365,12 @@ InterfazReportes rep = new InterfazReportes(ctrl);
         rep.show();        // TODO add your handling code here:
     }//GEN-LAST:event_garantias1ActionPerformed
 
+    private void garantias2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garantias2ActionPerformed
+InterfazGarantiaStatus garsta = new InterfazGarantiaStatus(ctrl);
+        jDesktopPane1.add(garsta);
+        garsta.show();         // TODO add your handling code here:
+    }//GEN-LAST:event_garantias2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -407,6 +422,7 @@ InterfazReportes rep = new InterfazReportes(ctrl);
     private javax.swing.JMenuItem Lineas;
     private javax.swing.JMenuItem garantias;
     private javax.swing.JMenuItem garantias1;
+    private javax.swing.JMenuItem garantias2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;

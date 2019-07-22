@@ -150,7 +150,7 @@ public class Sentencias_sql {
      public String status(String serie) {
 String status = null;
          try{
-         ps = con.conectado().prepareStatement("SELECT status_idstatus from equipo where serie='"+serie+"';");
+         ps = con.conectado().prepareStatement("SELECT status_idstatus from equipo where serie like '%"+serie+"';");
          res = ps.executeQuery();
          res.next();
          status = res.getString(1);

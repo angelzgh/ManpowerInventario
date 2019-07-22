@@ -16,19 +16,16 @@ import javax.swing.JOptionPane;
  *
  * @author garci
  */
-public class InterfazEntrada extends javax.swing.JInternalFrame {
+public class InterfazGarantiaStatus extends javax.swing.JInternalFrame {
 control_existencias ctrl = new control_existencias();
      control_existencias con;
      String itemSeleecionado;
     private Object [][] datostabla;   
-    public InterfazEntrada(control_existencias con) {
+    public InterfazGarantiaStatus(control_existencias con) {
         initComponents();
         this.con = con;
-        limpiar();
         registrar.setVisible(false);
-        statusE.removeAllItems();
     }
-
    
 
     /**
@@ -67,7 +64,7 @@ control_existencias ctrl = new control_existencias();
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximizable(true);
         setResizable(true);
-        setTitle("Entrada");
+        setTitle("Status de Garantía");
         setMinimumSize(new java.awt.Dimension(105, 34));
         setPreferredSize(new java.awt.Dimension(780, 500));
 
@@ -78,10 +75,10 @@ control_existencias ctrl = new control_existencias();
         jLabel2.setText("Destinatario");
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel3.setText("Motivo de entrada:");
+        jLabel3.setText("Comentarios:");
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel8.setText("Fecha de registro");
+        jLabel8.setText("Fecha de salida");
 
         registrar.setBackground(new java.awt.Color(255, 255, 255));
         registrar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -128,7 +125,7 @@ control_existencias ctrl = new control_existencias();
         jScrollPane1.setViewportView(motivo);
 
         statusE.setEditable(true);
-        statusE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-------------", "Item 2", "Item 3", "Item 4" }));
+        statusE.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Asignado", "Dañado", "En bodega" }));
         statusE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statusEActionPerformed(evt);
@@ -255,22 +252,14 @@ control_existencias ctrl = new control_existencias();
     }// </editor-fold>//GEN-END:initComponents
 public void limpiar()
     {
-calendario.setEnabled(false);
+calendario.setDateFormatString("");
 serie.setText("");
-nombre.setEnabled(false);
-udn.setEnabled(false);
-re.setEnabled(false);
-des.setEnabled(false);
-motivo.setEnabled(false);
-guia.setEnabled(false);
-statusE.setEnabled(false);
 nombre.setText("");
 udn.setText("");
 re.setText("");
 des.setText(""); 
 motivo.setText(""); 
 guia.setText(""); 
-statusE.removeAllItems();
     }
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
 String s=serie.getText();
@@ -280,17 +269,6 @@ if(ctrl.existe_equipo("'"+s+"'")){
 registrar.setVisible(true);
 nombre.setText(con.ingresa_nombre("'"+s+"'"));
 udn.setText(con.ingresa_udn("'"+s+"'"));
-
-calendario.setEnabled(true);
-re.setEnabled(true);
-des.setEnabled(true);
-motivo.setEnabled(true);
-guia.setEnabled(true);
-statusE.setEnabled(true);
-Object[] stat = con.combox("status","idstatus"); 
-        statusE.addItem(stat[2]);
-        statusE.addItem(stat[3]);
-        statusE.addItem(stat[5]);
 Date now = new Date(System.currentTimeMillis());
 SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 System.out.println(date.format(now));
@@ -313,19 +291,21 @@ public static String convertTostring(Date Date)
         }
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
 String fa,is;
-     String bdg=" ";
     fa = convertTostring(calendario.getDate());
     is=statusE.getSelectedItem().toString();
-        if(serie.equals("")||motivo.equals("")||des.equals("")||re.equals("")||guia.equals(""))
+        if(!serie.equals("")&&!motivo.equals("")&&!des.equals("")&&!re.equals("")&&!guia.equals(""))
          {          
-            JOptionPane.showMessageDialog(null, "Hay campos vacios obligatorios"); 
-         }else if( con.entrada(guia.getText(),re.getText(),des.getText(),fa,serie.getText(),motivo.getText())&&con.acualizarEntradas(is,motivo.getText(), serie.getText())&&con.acualizarEntradaf(fa, serie.getText()))
-         {          
+        if( con.entrada(guia.getText(),re.getText(),des.getText(),fa,serie.getText(),motivo.getText())&&con.acualizarEntradas(is,motivo.getText(), serie.getText())&&con.acualizarEntradaf(fa, serie.getText()))
+        {            
             JOptionPane.showMessageDialog(null,"Equipo registrado");
             limpiar();
             registrar.setVisible(false);
-        }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");} 
-         
+        }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");}
+         }
+         else
+         {
+             JOptionPane.showMessageDialog(null, "Hay campos vacios obligatorios");  
+         }
 // TODO add your handling code here:
     }//GEN-LAST:event_registrarActionPerformed
 
