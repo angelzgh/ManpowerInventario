@@ -25,8 +25,13 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
     public InterfazRX270() {
         initComponents();
         filtrohis.setVisible(false);
+        acartar.setVisible(false);
     }
 
+    public void agregarCarta(){
+    acartar.setVisible(true);
+    }
+    
     public String mostrar(){
 String p= null;
         if(this.title.equals("Registro L450")){
@@ -50,6 +55,7 @@ String p= null;
         datostabla = ctre.consulta_equipohisto(mostrar());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
+        acartar.setVisible(false);
     }
   
     public void mostrar_tablaenbodega(){
@@ -58,6 +64,7 @@ String p= null;
         datostabla = ctre.consulta_equipobodega(mostrar());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
+        acartar.setVisible(false);
     }
     public void mostrar_tabladañado(){
 
@@ -65,6 +72,7 @@ String p= null;
         datostabla = ctre.consulta_equipodañado(mostrar());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);  
+        acartar.setVisible(false);
     }
      public void mostrar_tablagarantia(){
 
@@ -72,6 +80,7 @@ String p= null;
         datostabla = ctre.consulta_equipogarantia(mostrar());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
+        acartar.setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,6 +104,7 @@ String p= null;
         jLabel1 = new javax.swing.JLabel();
         filtro = new javax.swing.JComboBox<>();
         filtrohis = new javax.swing.JComboBox<>();
+        acartar = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -190,6 +200,13 @@ String p= null;
             }
         });
 
+        acartar.setText("Agregar Carta Responsiva");
+        acartar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acartarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,11 +223,11 @@ String p= null;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(filtrohis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(filtro, 0, 101, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(asignados)
@@ -224,7 +241,9 @@ String p= null;
                                 .addComponent(jButton3)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(194, 194, 194)
+                                .addComponent(acartar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
@@ -232,7 +251,7 @@ String p= null;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(asignados)
@@ -244,11 +263,17 @@ String p= null;
                     .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(filtrohis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(filtrohis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(acartar)
+                        .addContainerGap())))
         );
 
         pack();
@@ -320,7 +345,7 @@ String status=ctr.statusbdg(equipo);
             switch(h){
                 case 0:
                   if (ctr.existe_equipoX270("'%"+equipo+"'")) {  
-            String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+            String[] columnas = {"Serie","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
         datostabla = ctr.buscadorhistos(buscar.getText());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
@@ -332,7 +357,7 @@ String status=ctr.statusbdg(equipo);
         
                 case 1:
                     if (ctr.existe_usuario("'"+equipo+"%'")) {
-            String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+            String[] columnas = {"Serie","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
         datostabla = ctr.buscadorhistou(buscar.getText());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
@@ -342,7 +367,7 @@ String status=ctr.statusbdg(equipo);
         }break;
                 case 2:
                     if (ctr.existe_soporte("'"+equipo+"'")) {
-        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
+        String[] columnas = {"Serie","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
         datostabla = ctr.buscadorhistoso(buscar.getText());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
         jTable1.setModel(datos);
@@ -375,7 +400,9 @@ mostrar_tabladañado();        // TODO add your handling code here:
     }//GEN-LAST:event_dañadosActionPerformed
 
     private void asignadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignadosActionPerformed
-mostrar_tablaasignados();        // TODO add your handling code here:
+mostrar_tablaasignados();
+agregarCarta();
+// TODO add your handling code here:
     }//GEN-LAST:event_asignadosActionPerformed
 
     private void filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroActionPerformed
@@ -392,7 +419,12 @@ String itemSeleecionado;
         // TODO add your handling code here:
     }//GEN-LAST:event_filtrohisActionPerformed
 
+    private void acartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acartarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acartarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton acartar;
     private javax.swing.JButton asignados;
     private javax.swing.JTextField buscar;
     private javax.swing.JButton dañados;

@@ -220,20 +220,20 @@ public class control_existencias
       } 
   public Object[][] buscadorhistos(String busca)
      {
-        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
-        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.equipo_serie like '%"+busca+"' order by a.fechaasig;");
+        String[] columnas={"Serie","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.equipo_serie like '%"+busca+"' order by a.fechaasig;");
         return resultado;
       } 
   public Object[][] buscadorhistou(String busca)
      {
-        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
-        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm!='0' and a.correo like '"+busca+"%' order by a.fechaasig;");
+        String[] columnas={"Serie","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm!='0' and a.correo like '"+busca+"%' order by a.fechaasig;");
         return resultado;
       }        
 public Object[][] buscadorhistoso(String busca)
      {
-        String[] columnas={"Serie","Status_idstatus","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
-        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm!='0' and a.soporte_idsoporte='"+busca+"' order by a.fechaasig;");
+        String[] columnas={"Serie","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
+        Object[][] resultado = sen.GetTabla(columnas, "equipo","asignacion", "select e.serie,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+"PC0SU"+"%' and a.fechaterm!='0' and a.soporte_idsoporte='"+busca+"' order by a.fechaasig;");
         return resultado;
       }
 
@@ -253,6 +253,12 @@ public Object[][] buscadorhistoso(String busca)
         
             String[] columnas={id,remitente,destinatario,fecha,serie,motivo};
             return sen.insertar(columnas, "insert into entrada values(?,?,?,?,?,?)");
+    }
+         public boolean entradag(String id,String fechaE, String fechaS, String comentarios, String serie, String remitente,String destinatario)
+    {               
+        
+            String[] columnas={id,fechaE,fechaS,comentarios,serie,remitente,destinatario};
+            return sen.insertar(columnas, "insert into garantia(idgarantia,FechaE,FechaS,Comentarios,Equipo_Serie,Remitente,Destinatario) values(?,?,?,?,?,?,?)");
     }
          public boolean bdg(String id,String serie, String nombre, String noempleado, String correo, String jefe,String udn,String cc,String fechaasig,String hostname,String bitlocker,String soporte, String serieanterior, String fechabaja,String status)
     {               

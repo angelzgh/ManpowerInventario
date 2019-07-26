@@ -312,7 +312,7 @@ public static String convertTostring(Date Date)
             return fech;
         }
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-String fa,is;
+String fa,is,st = null;
      String bdg=" ";
     fa = convertTostring(calendario.getDate());
     is=statusE.getSelectedItem().toString();
@@ -320,11 +320,24 @@ String fa,is;
          {          
             JOptionPane.showMessageDialog(null, "Hay campos vacios obligatorios"); 
          }else if( con.entrada(guia.getText(),re.getText(),des.getText(),fa,serie.getText(),motivo.getText())&&con.acualizarEntradas(is,motivo.getText(), serie.getText())&&con.acualizarEntradaf(fa, serie.getText()))
-         {          
+         {  
+            st=is;
+             System.out.println("status:"+st);
             JOptionPane.showMessageDialog(null,"Equipo registrado");
-            limpiar();
             registrar.setVisible(false);
         }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");} 
+         if(st.equals("Garantia")){
+        if(con.entradag(guia.getText(),fa,bdg,bdg,serie.getText(),bdg,bdg)){
+            System.out.println("Garantia registrada:"+serie.getText());
+        limpiar();
+        }
+        else{
+            System.out.println("Garantia no registrada:"+serie.getText());
+        limpiar();
+        }
+        }else{
+         limpiar();
+         }
          
 // TODO add your handling code here:
     }//GEN-LAST:event_registrarActionPerformed

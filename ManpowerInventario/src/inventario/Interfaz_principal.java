@@ -77,6 +77,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         jMenuBar1 = new javax.swing.JMenuBar();
         Asignacion = new javax.swing.JMenu();
         Asig = new javax.swing.JMenuItem();
+        Asig1 = new javax.swing.JMenuItem();
         EnSal = new javax.swing.JMenu();
         Esregistrar = new javax.swing.JMenuItem();
         Equipomen = new javax.swing.JMenu();
@@ -90,11 +91,13 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         Earrendamiento = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Lineas = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        garantias2 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        garantias3 = new javax.swing.JMenuItem();
         garantias = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         garantias1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        garantias2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -119,13 +122,21 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         Asignacion.setMaximumSize(new java.awt.Dimension(130, 32767));
         Asignacion.setPreferredSize(new java.awt.Dimension(180, 50));
 
-        Asig.setText("Nueva");
+        Asig.setText("Equipo de Cómputo");
         Asig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AsigActionPerformed(evt);
             }
         });
         Asignacion.add(Asig);
+
+        Asig1.setText("Linea telefonica");
+        Asig1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Asig1ActionPerformed(evt);
+            }
+        });
+        Asignacion.add(Asig1);
 
         jMenuBar1.add(Asignacion);
 
@@ -230,19 +241,18 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu3.setText("Garantias");
-        jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jMenu3.setMaximumSize(new java.awt.Dimension(100, 32767));
-        jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
+        jMenu5.setBorder(new javax.swing.border.MatteBorder(null));
+        jMenu5.setText("Salidas");
+        jMenu5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jMenu5.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        garantias2.setText("Status");
-        garantias2.addActionListener(new java.awt.event.ActionListener() {
+        garantias3.setText("Historial");
+        garantias3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                garantias2ActionPerformed(evt);
+                garantias3ActionPerformed(evt);
             }
         });
-        jMenu3.add(garantias2);
+        jMenu5.add(garantias3);
 
         garantias.setText("Salida de equipos");
         garantias.addActionListener(new java.awt.event.ActionListener() {
@@ -250,9 +260,9 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
                 garantiasActionPerformed(evt);
             }
         });
-        jMenu3.add(garantias);
+        jMenu5.add(garantias);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenu5);
 
         jMenu4.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu4.setText("Reportes");
@@ -268,6 +278,22 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         jMenu4.add(garantias1);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
+        jMenu3.setText("Garantias");
+        jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jMenu3.setMaximumSize(new java.awt.Dimension(100, 32767));
+        jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
+
+        garantias2.setText("Status");
+        garantias2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                garantias2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(garantias2);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -354,9 +380,9 @@ InterfazRArrendamiento rArrendamiento = new InterfazRArrendamiento();
     }//GEN-LAST:event_LineasActionPerformed
 
     private void garantiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garantiasActionPerformed
-InterfazGarantia gar = new InterfazGarantia(ctrl);
-        jDesktopPane1.add(gar);
-        gar.show();       // TODO add your handling code here:
+InterfazSalidas sal = new InterfazSalidas(ctrl);
+        jDesktopPane1.add(sal);
+        sal.show();       // TODO add your handling code here:
     }//GEN-LAST:event_garantiasActionPerformed
 
     private void garantias1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garantias1ActionPerformed
@@ -370,6 +396,16 @@ InterfazGarantiaStatus garsta = new InterfazGarantiaStatus(ctrl);
         jDesktopPane1.add(garsta);
         garsta.show();         // TODO add your handling code here:
     }//GEN-LAST:event_garantias2ActionPerformed
+
+    private void garantias3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_garantias3ActionPerformed
+InterfazSalidasHistorial salhis = new InterfazSalidasHistorial();
+        jDesktopPane1.add(salhis);
+        salhis.show();         // TODO add your handling code here:
+    }//GEN-LAST:event_garantias3ActionPerformed
+
+    private void Asig1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Asig1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Asig1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,6 +443,7 @@ InterfazGarantiaStatus garsta = new InterfazGarantiaStatus(ctrl);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Asig;
+    private javax.swing.JMenuItem Asig1;
     private javax.swing.JMenu Asignacion;
     private javax.swing.JMenuItem E13;
     private javax.swing.JMenuItem Earrendamiento;
@@ -423,11 +460,13 @@ InterfazGarantiaStatus garsta = new InterfazGarantiaStatus(ctrl);
     private javax.swing.JMenuItem garantias;
     private javax.swing.JMenuItem garantias1;
     private javax.swing.JMenuItem garantias2;
+    private javax.swing.JMenuItem garantias3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
