@@ -65,8 +65,7 @@ control_existencias ctrl = new control_existencias();
         udn = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximizable(true);
-        setResizable(true);
+        setIconifiable(true);
         setTitle("Entrada");
         setMinimumSize(new java.awt.Dimension(105, 34));
         setPreferredSize(new java.awt.Dimension(780, 500));
@@ -326,7 +325,8 @@ String fa,is,st = null;
             JOptionPane.showMessageDialog(null,"Equipo registrado");
             registrar.setVisible(false);
         }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");} 
-         if(st.equals("Garantia")){
+        
+        if(st.equals("Garantia")){
         if(con.entradag(guia.getText(),fa,bdg,bdg,serie.getText(),bdg,bdg)){
             System.out.println("Garantia registrada:"+serie.getText());
         limpiar();

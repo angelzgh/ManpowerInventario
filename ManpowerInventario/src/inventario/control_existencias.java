@@ -260,13 +260,33 @@ public Object[][] buscadorhistoso(String busca)
             String[] columnas={id,fechaE,fechaS,comentarios,serie,remitente,destinatario};
             return sen.insertar(columnas, "insert into garantia(idgarantia,FechaE,FechaS,Comentarios,Equipo_Serie,Remitente,Destinatario) values(?,?,?,?,?,?,?)");
     }
+         public boolean salidaac(String id,String fechas, String accesorio, String destinatario, String soporte)
+    {               
+        
+            String[] columnas={id,fechas,accesorio,destinatario,soporte};
+            return sen.insertar(columnas, "insert into salidas values(?,?,?,?,?)");
+    }
+          public boolean salidaae(String id,String correo, String destinatario, String remitente, String fechas,String serie)
+    {               
+        
+            String[] columnas={id,correo,destinatario,remitente,fechas,serie};
+            return sen.insertar(columnas, "insert into salidaae values(?,?,?,?,?,?)");
+    }
+         public boolean actualizarsg(String fechas,String comentario,String remitente,String destinatario,String idsalida,String serie){
+           String[] columnas={fechas,comentario,remitente,destinatario,idsalida};
+        return sen.insertar(columnas, "update garantia set fechas=?,comentarios=?,remitente=?,destinatario=?,idsalida=? where equipo_serie='"+serie+"';");
+       }
          public boolean bdg(String id,String serie, String nombre, String noempleado, String correo, String jefe,String udn,String cc,String fechaasig,String hostname,String bitlocker,String soporte, String serieanterior, String fechabaja,String status)
     {               
         
             String[] columnas={id,serie,nombre,noempleado,correo,jefe,udn,cc,fechaasig,hostname,bitlocker,soporte,serieanterior,fechabaja,status};
             return sen.insertar(columnas, "insert into bdg(idbdg,Equipo_Serie,Nombre,Noempleado,Correo,Jefe,UDN_idUDN,CC_idCC,fechaasig,Hostname,Bitlocker,Soporte_idSoporte,EquipoAnterior,Fechaterm,status_idStatus) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     }
-         
+        public boolean acualizarEquipoS(String status_idstatus,String comentario,String serie){
+           String[] columnas={status_idstatus,comentario};
+        return sen.insertar(columnas, "update equipo set status_idstatus=?,comentarios=? where serie='"+serie+"';");
+       
+       }  
        public boolean acualizarEquipo(String status_idstatus,String Cartar,String comentario,String serie){
            String[] columnas={status_idstatus,Cartar,comentario};
         return sen.insertar(columnas, "update equipo set status_idstatus=? ,cartar=?,comentarios=? where serie='"+serie+"';");
@@ -275,6 +295,10 @@ public Object[][] buscadorhistoso(String busca)
        public boolean acualizarEntradas(String status_idstatus,String comentarios,String serie){
            String[] columnas={status_idstatus,comentarios};
         return sen.insertar(columnas, "update equipo set status_idstatus=?, comentarios=? where serie='"+serie+"';");
+       }
+       public boolean acualizarEntradafG(String fecha,String nombre,String serie){
+           String[] columnas={fecha};
+        return sen.insertar(columnas, "update asignacion set fechaterm=?  where equipo_serie='"+serie+"' and nombre='"+nombre+"';");
        }
        public boolean acualizarEntradaf(String fecha,String serie){
            String[] columnas={fecha};

@@ -25,6 +25,9 @@ control_existencias ctrl = new control_existencias();
         initComponents();
         this.con = con;
         limpiar();
+        serie.setVisible(false);
+numserie.setVisible(false);
+buscar.setVisible(false);
         registrar.setVisible(false);
     }
 public void tiposalida(){
@@ -35,14 +38,38 @@ buscar.setVisible(true);
 accesorios.setEnabled(false);
 equipog.setEnabled(false);
 tiposal.setEnabled(false);
+statusE.setVisible(true);
+lstatus.setVisible(true);
+soporte.setVisible(true);
+soporte.setEnabled(false);
+label.setText("Comentarios:");
 } else if(accesorios.isSelected()){
     serie.setVisible(false);
 numserie.setVisible(false);
 buscar.setVisible(false);
-statusE.setEnabled(false);
+nombre.setVisible(false);
+lnombre.setVisible(false);
+udn.setVisible(false);
+ludn.setVisible(false);
+statusE.setVisible(false);
+lstatus.setVisible(false);
     accesorios.setEnabled(false);
 equipog.setEnabled(false);
 tiposal.setEnabled(false);
+calendario.setEnabled(true);
+des.setEnabled(true);
+soporte.setVisible(true);
+soporte.setEnabled(true);
+motivo.setEnabled(true);
+guia.setEnabled(true);
+statusE.setEnabled(true);
+Date now = new Date(System.currentTimeMillis());
+SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+System.out.println(date.format(now));
+calendario.setDate(now);
+label.setText("Tipo de Accesorio:");
+raccesorios.setVisible(false);
+raccesorios.setVisible(true);
 }
 }
    
@@ -59,34 +86,34 @@ tiposal.setEnabled(false);
         jSpinner1 = new javax.swing.JSpinner();
         numserie = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         registrar = new javax.swing.JButton();
         serie = new javax.swing.JTextField();
-        des = new javax.swing.JTextField();
         guia = new javax.swing.JTextField();
         buscar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        re = new javax.swing.JTextField();
+        des = new javax.swing.JTextField();
         calendario = new com.toedter.calendar.JDateChooser();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lnombre = new javax.swing.JLabel();
+        ludn = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         motivo = new javax.swing.JTextArea();
         statusE = new javax.swing.JComboBox();
-        jlstatus1 = new javax.swing.JLabel();
+        lstatus = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         udn = new javax.swing.JTextField();
         tiposal = new javax.swing.JLabel();
         equipog = new javax.swing.JCheckBox();
         accesorios = new javax.swing.JCheckBox();
         cancelar = new javax.swing.JButton();
+        soporte = new javax.swing.JComboBox<>();
+        raccesorios = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximizable(true);
-        setResizable(true);
+        setIconifiable(true);
         setTitle("Salida");
         setMinimumSize(new java.awt.Dimension(105, 34));
         setPreferredSize(new java.awt.Dimension(780, 500));
@@ -97,8 +124,7 @@ tiposal.setEnabled(false);
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel2.setText("Destinatario");
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel3.setText("Comentarios:");
+        label.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel8.setText("Fecha de Salida");
@@ -126,11 +152,11 @@ tiposal.setEnabled(false);
 
         calendario.setDateFormatString("yyyy/MM/d");
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel13.setText("Nombre");
+        lnombre.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lnombre.setText("Nombre");
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel14.setText("UDN");
+        ludn.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        ludn.setText("UDN");
 
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -154,8 +180,8 @@ tiposal.setEnabled(false);
             }
         });
 
-        jlstatus1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jlstatus1.setText("Status");
+        lstatus.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lstatus.setText("Status");
 
         nombre.setEditable(false);
         nombre.setEnabled(false);
@@ -187,12 +213,29 @@ tiposal.setEnabled(false);
             }
         });
 
+        soporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----------------------------" }));
+        soporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                soporteActionPerformed(evt);
+            }
+        });
+
+        raccesorios.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        raccesorios.setText("Registrar");
+        raccesorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                raccesoriosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(raccesorios, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,17 +247,9 @@ tiposal.setEnabled(false);
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                                    .addComponent(des, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(re, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
+                                            .addComponent(label)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addGap(0, 0, Short.MAX_VALUE)
@@ -223,10 +258,18 @@ tiposal.setEnabled(false);
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(guia, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jScrollPane1))
+                                .addComponent(jScrollPane1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel2))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(des, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(soporte, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel8))
                         .addGap(9, 9, 9)
-                        .addComponent(jlstatus1)
+                        .addComponent(lstatus)
                         .addGap(18, 18, 18)
                         .addComponent(statusE, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -235,8 +278,8 @@ tiposal.setEnabled(false);
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel14))
+                                    .addComponent(lnombre)
+                                    .addComponent(ludn))
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,7 +300,7 @@ tiposal.setEnabled(false);
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cancelar)
                                     .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,20 +322,20 @@ tiposal.setEnabled(false);
                     .addComponent(buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
+                    .addComponent(lnombre)
                     .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
+                    .addComponent(ludn)
                     .addComponent(udn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(re, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(soporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(des, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(des, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,16 +345,17 @@ tiposal.setEnabled(false);
                     .addComponent(jLabel8)
                     .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlstatus1)
+                        .addComponent(lstatus)
                         .addComponent(statusE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12)
-                .addComponent(jLabel3)
+                .addComponent(label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(raccesorios, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -321,23 +365,28 @@ public void limpiar()
     {
 calendario.setEnabled(false);
 serie.setText("");
-serie.setVisible(false);
-numserie.setVisible(false);
-buscar.setVisible(false);
+raccesorios.setVisible(false);
 nombre.setEnabled(false);
 udn.setEnabled(false);
-re.setEnabled(false);
 des.setEnabled(false);
+soporte.setEnabled(false);
 motivo.setEnabled(false);
 guia.setEnabled(false);
 statusE.setEnabled(false);
+statusE.setVisible(true);
+soporte.setVisible(true);
 registrar.setVisible(false);
 nombre.setText("");
 udn.setText("");
-re.setText("");
-des.setText(""); 
+des.setText("");
 motivo.setText(""); 
 guia.setText(""); 
+Object[] resp = con.combox("soporte","idsoporte");
+        soporte.removeAllItems();
+        for(int i=0;i<resp.length;i++)
+        {
+        soporte.addItem((String) resp[i]);
+        }
     }
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
 String s=serie.getText();
@@ -350,8 +399,8 @@ nombre.setText(con.ingresa_nombre("'"+s+"'"));
 udn.setText(con.ingresa_udn("'"+s+"'"));
 
 calendario.setEnabled(true);
-re.setEnabled(true);
 des.setEnabled(true);
+soporte.setEnabled(true);
 motivo.setEnabled(true);
 guia.setEnabled(true);
 statusE.setEnabled(true);
@@ -367,6 +416,9 @@ limpiar();
 //calendario.setDateFormatString(fecha);
 }else{
 JOptionPane.showMessageDialog(null,"La serie "+'"'+s+'"'+" no existe");
+serie.setVisible(true);
+numserie.setVisible(true);
+buscar.setVisible(true);
 limpiar();
 }
     }//GEN-LAST:event_buscarActionPerformed
@@ -379,17 +431,27 @@ public static String convertTostring(Date Date)
             return fech;
         }
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-String fa,is;
+String fa,is,so;
+so=soporte.getSelectedItem().toString();
      String bdg=" ";
     fa = convertTostring(calendario.getDate());
     is=statusE.getSelectedItem().toString();
-        if(serie.equals("")||motivo.equals("")||des.equals("")||re.equals("")||guia.equals(""))
+        if(serie.equals("")||motivo.equals("")||soporte.getSelectedItem().equals("")||des.equals("")||guia.equals(""))
          {          
             JOptionPane.showMessageDialog(null, "Hay campos vacios obligatorios"); 
-         }else if( con.entrada(guia.getText(),re.getText(),des.getText(),fa,serie.getText(),motivo.getText())&&con.acualizarEntradas(is,motivo.getText(), serie.getText())&&con.acualizarEntradaf(fa, serie.getText()))
+         }else if( con.actualizarsg(fa,motivo.getText(),so,des.getText(),guia.getText(),serie.getText())&&con.acualizarEntradas(is,motivo.getText(),serie.getText())&&con.acualizarEntradafG("0",nombre.getText(),serie.getText()))
          {          
             JOptionPane.showMessageDialog(null,"Equipo registrado");
             limpiar();
+            accesorios.setEnabled(true);
+equipog.setEnabled(true);
+accesorios.setSelected(false);
+equipog.setSelected(false);
+tiposal.setEnabled(true); 
+serie.setVisible(false);
+numserie.setVisible(false);
+buscar.setVisible(false);
+label.setText("");
             registrar.setVisible(false);
         }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");} 
          
@@ -411,12 +473,49 @@ tiposalida();        // TODO add your handling code here:
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
 accesorios.setEnabled(true);
 equipog.setEnabled(true);
-tiposal.setEnabled(true);        // TODO add your handling code here:
+accesorios.setSelected(false);
+equipog.setSelected(false);
+tiposal.setEnabled(true); 
+serie.setVisible(false);
+numserie.setVisible(false);
+buscar.setVisible(false);
+label.setText("");
+limpiar();// TODO add your handling code here:
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void accesoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accesoriosActionPerformed
 tiposalida();        // TODO add your handling code here:
     }//GEN-LAST:event_accesoriosActionPerformed
+
+    private void soporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_soporteActionPerformed
+
+    private void raccesoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raccesoriosActionPerformed
+String fa,is,so;
+so=soporte.getSelectedItem().toString();
+     String bdg=" ";
+    fa = convertTostring(calendario.getDate());
+    is=statusE.getSelectedItem().toString();
+        if(motivo.equals("")||soporte.getSelectedItem().equals("")||des.equals("")||guia.equals(""))
+         {          
+            JOptionPane.showMessageDialog(null, "Hay campos vacios obligatorios"); 
+         }else if( con.salidaac(guia.getText(),fa,motivo.getText(),des.getText(),so))
+         {          
+            JOptionPane.showMessageDialog(null,"Equipo registrado");
+            limpiar();
+            accesorios.setEnabled(true);
+equipog.setEnabled(true);
+accesorios.setSelected(false);
+equipog.setSelected(false);
+tiposal.setEnabled(true); 
+serie.setVisible(false);
+numserie.setVisible(false);
+buscar.setVisible(false);
+label.setText("");
+        }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");} 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_raccesoriosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -428,22 +527,23 @@ tiposalida();        // TODO add your handling code here:
     private javax.swing.JCheckBox equipog;
     private javax.swing.JTextField guia;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JLabel jlstatus1;
+    private javax.swing.JLabel label;
+    private javax.swing.JLabel lnombre;
+    private javax.swing.JLabel lstatus;
+    private javax.swing.JLabel ludn;
     private javax.swing.JTextArea motivo;
     private javax.swing.JTextField nombre;
     private javax.swing.JLabel numserie;
-    private javax.swing.JTextField re;
+    private javax.swing.JButton raccesorios;
     private javax.swing.JButton registrar;
     private javax.swing.JTextField serie;
+    private javax.swing.JComboBox<String> soporte;
     private javax.swing.JComboBox statusE;
     private javax.swing.JLabel tiposal;
     private javax.swing.JTextField udn;

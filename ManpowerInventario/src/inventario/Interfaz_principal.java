@@ -89,6 +89,7 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
         Ecpu = new javax.swing.JMenuItem();
         Emonitor = new javax.swing.JMenuItem();
         Earrendamiento = new javax.swing.JMenuItem();
+        El451 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Lineas = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -223,6 +224,14 @@ if(serie.equals(JOptionPane.CANCEL_OPTION)){}
             }
         });
         Equipomen.add(Earrendamiento);
+
+        El451.setText("HP");
+        El451.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                El451ActionPerformed(evt);
+            }
+        });
+        Equipomen.add(El451);
 
         jMenuBar1.add(Equipomen);
 
@@ -407,6 +416,10 @@ InterfazSalidasHistorial salhis = new InterfazSalidasHistorial();
         // TODO add your handling code here:
     }//GEN-LAST:event_Asig1ActionPerformed
 
+    private void El451ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_El451ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_El451ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -449,6 +462,7 @@ InterfazSalidasHistorial salhis = new InterfazSalidasHistorial();
     private javax.swing.JMenuItem Earrendamiento;
     private javax.swing.JMenuItem Ecpu;
     public javax.swing.JMenuItem El450;
+    public javax.swing.JMenuItem El451;
     private javax.swing.JMenuItem El470;
     private javax.swing.JMenuItem Emonitor;
     private javax.swing.JMenu EnSal;
