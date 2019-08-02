@@ -15,8 +15,32 @@ public class InterfazSalidasHistorial extends javax.swing.JInternalFrame {
    
     private Object[][] datostabla;    
     control_existencias ctr = new control_existencias();
+    control_equipo ctre= new control_equipo();
     public InterfazSalidasHistorial() {
-        initComponents();        
+        initComponents();
+mostrar_tablaenviadosa();        
+    }
+    
+     public void mostrar_tablaenviadosa(){
+        
+        String[] columnas = {"Id de Envío","Remitente","Destinatario","Fecha","Serie"};
+        datostabla = ctre.consulta_equiposaenviados();
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+    }
+     public void mostrar_tablaenviadosg(){
+        
+        String[] columnas = {"Id de Envío","Fecha de Entrada","Fecha de salida","Remitente","Destinatario","Serie","Comentarios"};
+        datostabla = ctre.consulta_equiposgenviados();
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
+    }
+     public void mostrar_tablaenviadosacc(){
+        
+        String[] columnas = {"Id de Envío","Fecha","Remitente","Destinatario","Accesorio(s)"};
+        datostabla = ctre.consulta_accesoriosenviados();
+        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        jTable1.setModel(datos);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -74,6 +98,11 @@ public class InterfazSalidasHistorial extends javax.swing.JInternalFrame {
         });
 
         jButton3.setText("Equipos Asignados");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Equipos Garantía");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -147,12 +176,16 @@ public class InterfazSalidasHistorial extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+mostrar_tablaenviadosg();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+mostrar_tablaenviadosacc();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+mostrar_tablaenviadosa();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscarcliente;

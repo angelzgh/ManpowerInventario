@@ -60,4 +60,19 @@ public class control_equipo {
         Object[][] datos = sensql.GetTabla1(columnas, "Equipo","select serie, status_idstatus, comentarios from equipo   where  status_idstatus='Garantia' and  serie like '"+tipoe+"%' ;");
         return datos;
     }
+       public Object[][] consulta_equiposaenviados(){
+        String[] columnas={"Idsalidaae","Remitente","Destinatario","Fechas","equipo_serie"};
+        Object[][] datos = sensql.GetTabla1(columnas, "salidaae","select idsalidaae,remitente,destinatario,fechas,equipo_serie from salidaae;");
+        return datos;
+    }
+       public Object[][] consulta_equiposgenviados(){
+        String[] columnas={"Idsalida","fechae","fechas","remitente","destinatario","equipo_serie","comentarios"};
+        Object[][] datos = sensql.GetTabla1(columnas, "garantia","select Idsalida,fechae,fechas,remitente,destinatario,equipo_serie,comentarios from garantia where fechas!='0';");
+        return datos;
+    }
+       public Object[][] consulta_accesoriosenviados(){
+        String[] columnas={"Idsalidas","fechas","soporte_idsoporte","destinatario","accesorio"};
+        Object[][] datos = sensql.GetTabla1(columnas, "salidas","select Idsalidas,fechas,soporte_idsoporte,destinatario,accesorio from salidas;");
+        return datos;
+    }
 }

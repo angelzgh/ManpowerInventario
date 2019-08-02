@@ -254,11 +254,11 @@ public Object[][] buscadorhistoso(String busca)
             String[] columnas={id,remitente,destinatario,fecha,serie,motivo};
             return sen.insertar(columnas, "insert into entrada values(?,?,?,?,?,?)");
     }
-         public boolean entradag(String id,String fechaE, String fechaS, String comentarios, String serie, String remitente,String destinatario)
+         public boolean entradag(String id,String fechaE, String fechaS, String comentarios, String serie, String remitente,String destinatario,String idsalida)
     {               
         
-            String[] columnas={id,fechaE,fechaS,comentarios,serie,remitente,destinatario};
-            return sen.insertar(columnas, "insert into garantia(idgarantia,FechaE,FechaS,Comentarios,Equipo_Serie,Remitente,Destinatario) values(?,?,?,?,?,?,?)");
+            String[] columnas={id,fechaE,fechaS,comentarios,serie,remitente,destinatario,idsalida};
+            return sen.insertar(columnas, "insert into garantia(idgarantia,FechaE,FechaS,Comentarios,Equipo_Serie,Remitente,Destinatario,idsalida) values(?,?,?,?,?,?,?,?)");
     }
          public boolean salidaac(String id,String fechas, String accesorio, String destinatario, String soporte)
     {               
@@ -270,7 +270,7 @@ public Object[][] buscadorhistoso(String busca)
     {               
         
             String[] columnas={id,correo,destinatario,remitente,fechas,serie};
-            return sen.insertar(columnas, "insert into salidaae values(?,?,?,?,?,?)");
+            return sen.insertar(columnas, "insert into salida values(?,?,?,?,?,?)");
     }
          public boolean actualizarsg(String fechas,String comentario,String remitente,String destinatario,String idsalida,String serie){
            String[] columnas={fechas,comentario,remitente,destinatario,idsalida};

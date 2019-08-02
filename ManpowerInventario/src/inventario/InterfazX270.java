@@ -623,7 +623,12 @@ responsable.setEnabled(false);
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void limpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarMouseClicked
-otro.setVisible(false);
+        String condicion=status.getText();
+        if(condicion.equals("Asignado")){
+        JOptionPane.showMessageDialog(this, "El equipo se encuentra asignado actualmente, registra la entrada del equipo");
+            System.out.println("Status:"+condicion);
+        }else{
+        otro.setVisible(false);
         corregir.setVisible(false);
         bthostname.setEnabled(true);
 reasignar.setVisible(true);
@@ -704,6 +709,7 @@ Object[] unidad = con.combox("udn","idudn");
         for(int i=0;i<resp.length;i++)
         {
         responsable.addItem(resp[i]);
+        }
         }// TODO add your handling code here:
     }//GEN-LAST:event_limpiarMouseClicked
 

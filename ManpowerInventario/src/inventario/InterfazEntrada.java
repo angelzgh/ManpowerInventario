@@ -327,7 +327,7 @@ String fa,is,st = null;
         }else{JOptionPane.showMessageDialog(this, "Ocurrio un problema, registro no realizado");} 
         
         if(st.equals("Garantia")){
-        if(con.entradag(guia.getText(),fa,bdg,bdg,serie.getText(),bdg,bdg)){
+        if(con.entradag(guia.getText(),fa,"0",bdg,serie.getText(),bdg,bdg,bdg)){
             System.out.println("Garantia registrada:"+serie.getText());
         limpiar();
         }
