@@ -109,6 +109,17 @@ public class Sentencias_sql {
     }
     return data;
  }
+           public ResultSet ejecutarSQLSelect(String sql)
+    {
+       try {
+          PreparedStatement sentencia = con.conectado().prepareStatement(sql);
+          res = sentencia.executeQuery();
+          return res;
+       } catch (SQLException ex) {
+          System.err.println("Error "+ex);
+          return null;
+       }
+    }
      
      public boolean existencias(String campo, String from_where){
      int registros = 0;
