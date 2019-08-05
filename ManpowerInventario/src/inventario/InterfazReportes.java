@@ -31,10 +31,23 @@ control_existencias ctrl = new control_existencias();
         jTable1.setModel(modelo);
         modelo.addColumn("Selec");
         modelo.addColumn("Nombre");
+        Object[] unidad = con.combox("udn","estado");
+        udn.removeAllItems();
+        for(int i=0;i<unidad.length;i++)
+        {
+        udn.addItem((String) unidad[i]);
+        }
+        String estado=null;
         //se crea el JCheckBox en la columna indicada en getColum(cuenta desde 0)
+        if(udn.getSelectedItem().equals("CDMX")){
+        estado="CDMX";
+        }else if(udn.getSelectedItem().equals("Irapuato")){
+        estado="Irapuato";
+        }
+        System.out.println("Estado:"+estado);
         jTable1.getColumnModel().getColumn(0).setCellEditor( new Clase_CellEditor() );
         jTable1.getColumnModel().getColumn(0).setCellRenderer(new Clase_CellRender() );
-        llenarTabla.llenar_tabla(2, 1, modelo, jTable1);
+        llenarTabla.llenar_tabla(2, 1, modelo, jTable1,estado);
     }
    
 
@@ -58,7 +71,7 @@ control_existencias ctrl = new control_existencias();
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
-        t = new javax.swing.JComboBox<>();
+        udn = new javax.swing.JComboBox<>();
         modelocpu1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -113,10 +126,10 @@ control_existencias ctrl = new control_existencias();
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todas", "Por estado" }));
 
-        t.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un estado", "CDMX", "Estado de México", "Aguascalientes" }));
-        t.addActionListener(new java.awt.event.ActionListener() {
+        udn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un estado", " ", " " }));
+        udn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tActionPerformed(evt);
+                udnActionPerformed(evt);
             }
         });
 
@@ -165,7 +178,7 @@ control_existencias ctrl = new control_existencias();
                                                         .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(modelolap, 0, 145, Short.MAX_VALUE))
-                                                    .addComponent(t, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(udn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -203,7 +216,7 @@ control_existencias ctrl = new control_existencias();
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(t, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(udn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -227,9 +240,9 @@ this.dispose();        // TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tActionPerformed
+    private void udnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_udnActionPerformed
      // TODO add your handling code here:
-    }//GEN-LAST:event_tActionPerformed
+    }//GEN-LAST:event_udnActionPerformed
 
     private void EquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipoActionPerformed
         // TODO add your handling code here:
@@ -251,6 +264,6 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JComboBox<String> modelocpu;
     private javax.swing.JComboBox<String> modelocpu1;
     private javax.swing.JComboBox<String> modelolap;
-    private javax.swing.JComboBox<String> t;
+    private javax.swing.JComboBox<String> udn;
     // End of variables declaration//GEN-END:variables
 }

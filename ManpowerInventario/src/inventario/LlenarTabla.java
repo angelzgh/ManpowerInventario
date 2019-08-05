@@ -24,8 +24,9 @@ Sentencias_sql sen;
         
     }
     
-    public void llenar_tabla(int numCol,int columBoolean,DefaultTableModel modelo, JTable tabla){
-        try{String query="select nombre from asignacion";
+    public void llenar_tabla(int numCol,int columBoolean,DefaultTableModel modelo, JTable tabla,String estado){
+        try{
+            String query="select idudn from udn where estado='"+estado+"' ;";
             res = sen.ejecutarSQLSelect(query);
             //cantidad de columnas=2 contando la columna checkbox
             Object[] filas = new Object[numCol];
