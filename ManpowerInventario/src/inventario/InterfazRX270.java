@@ -8,18 +8,29 @@ import static javax.swing.Action.NAME;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import inventario.Interfaz_principal;
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  *
  * @author ANDRES
  */
 public class InterfazRX270 extends javax.swing.JInternalFrame {
 
-  
+  PdfDAO dao = null;
     private Object[][] datostabla;    
       
     control_existencias ctr = new control_existencias();
     control_equipo ctre= new control_equipo();
     Interfaz_principal inp= new Interfaz_principal();
+    String ruta_archivo = "";
+    Sentencias_sql sen= new Sentencias_sql();
     
       
     public InterfazRX270() {
@@ -30,6 +41,15 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
 
     public void agregarCarta(){
     acartar.setVisible(true);
+    }
+    public Image get_Image(String ruta) {
+        try {
+            ImageIcon imageIcon = new ImageIcon(getClass().getResource(ruta));
+            Image mainIcon = imageIcon.getImage();
+            return mainIcon;
+        } catch (Exception e) {
+        }
+        return null;
     }
     
     public String mostrar(){
@@ -43,10 +63,23 @@ String p= null;
 }    
       public void mostrar_tablaasignados(){
         
+          jTable1.setDefaultRenderer(Object.class, new imgTabla());
+          ImageIcon icono = null;
+        if (get_Image("/Imagen/32pdf.png") != null) {
+            icono = new ImageIcon(get_Image("/Imagen/32pdf.png"));
+        }
+        PdfVO vo = new PdfVO();
+        String status=sen.cartar(mostrar());
         String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
         datostabla = ctre.consulta_equipoasignados(mostrar());
         DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
-        jTable1.setModel(datos);
+                Object fila[] = new Object[14];
+                if (status != "Pendiente") {
+                    fila[13] = new JButton(icono);
+                } else {
+                    System.out.println("sin archivo");
+                }
+                jTable1.setModel(datos);
     }
        
     public void mostrar_tablahistorial(){
@@ -82,6 +115,35 @@ String p= null;
         jTable1.setModel(datos);
         acartar.setVisible(false);
     }
+     public void seleccionar_pdf() {
+        JFileChooser j = new JFileChooser();
+        FileNameExtensionFilter fi = new FileNameExtensionFilter("pdf", "pdf");
+        j.setFileFilter(fi);
+        int se = j.showOpenDialog(this);
+        if (se == 0) {
+            this.narchivo.setText("" + j.getSelectedFile().getName());
+            ruta_archivo = j.getSelectedFile().getAbsolutePath();
+
+        } else {
+        }
+    }
+     public void guardar_pdf(String serie, File ruta) {
+        PdfDAO pa = new PdfDAO();
+        PdfVO po = new PdfVO();
+        po.setSerie(serie);
+        try {
+            byte[] pdf = new byte[(int) ruta.length()];
+            InputStream input = new FileInputStream(ruta);
+            input.read(pdf);
+            po.setArchivopdf(pdf);
+        } catch (IOException ex) {
+            po.setArchivopdf(null);
+            //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
+        }
+        pa.Agregar_PdfVO(po);
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,6 +167,8 @@ String p= null;
         filtro = new javax.swing.JComboBox<>();
         filtrohis = new javax.swing.JComboBox<>();
         acartar = new javax.swing.JButton();
+        guardararch = new javax.swing.JButton();
+        narchivo = new javax.swing.JTextField();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -207,27 +271,34 @@ String p= null;
             }
         });
 
+        guardararch.setText("Guardar");
+        guardararch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardararchActionPerformed(evt);
+            }
+        });
+
+        narchivo.setEditable(false);
+        narchivo.setText("Nombre del archivo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1172, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(filtrohis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(filtro, 0, 101, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(asignados)
@@ -236,22 +307,31 @@ String p= null;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dañados)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(garantia)
+                                .addComponent(garantia))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(acartar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(narchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(guardararch)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton3)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(194, 194, 194)
-                                .addComponent(acartar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1214, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(asignados)
@@ -268,12 +348,15 @@ String p= null;
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(filtrohis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(filtrohis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(acartar)
-                        .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(acartar)
+                                .addComponent(narchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(guardararch))))
+                .addContainerGap())
         );
 
         pack();
@@ -420,8 +503,22 @@ String itemSeleecionado;
     }//GEN-LAST:event_filtrohisActionPerformed
 
     private void acartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acartarActionPerformed
-        // TODO add your handling code here:
+seleccionar_pdf();    // TODO add your handling code here:
     }//GEN-LAST:event_acartarActionPerformed
+
+    private void guardararchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardararchActionPerformed
+ String nombre = narchivo.getText();
+String serie="PC0SUCC2";
+        File ruta = new File(ruta_archivo);
+        if (nombre.trim().length() != 0 && ruta_archivo.trim().length() != 0) {
+            guardar_pdf(serie, ruta);
+            ruta_archivo = "";
+            narchivo.setEnabled(false);
+            narchivo.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Rellenar todo los campos");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_guardararchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acartar;
@@ -432,11 +529,13 @@ String itemSeleecionado;
     private javax.swing.JComboBox<String> filtro;
     private javax.swing.JComboBox<String> filtrohis;
     private javax.swing.JButton garantia;
+    private javax.swing.JButton guardararch;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField narchivo;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,7 +17,6 @@ public class conexion {
     Connection con = null;
    
 
-    
     public conexion() {
      try{  
          

@@ -38,6 +38,7 @@ public class control_equipo {
      public Object[][] consulta_equipohisto(String tipoe){
         String[] columnas={"Serie","Nombre","Noempleado","Correo","udn_idudn","cc_idcc","Jefe","Fechaasig","Hostname","Bitlocker","soporte_idsoporte","Comentarios","Cartar"};
         Object[][] datos = sensql.GetTabla(columnas, "Equipo","Asignacion", "select e.serie,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+tipoe+"%'  order by a.fechaasig;");
+            
         return datos;
     }
     public Object[][] consulta_equipoasignados(String tipoe){

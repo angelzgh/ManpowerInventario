@@ -3,6 +3,7 @@ package inventario;
 
 import com.sun.crypto.provider.RSACipher;
 import java.awt.List;
+import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,7 +39,45 @@ public class Sentencias_sql {
       }
        return estado;
    }
-    
+    public boolean agregar(File datos[], String insert){
+        PdfVO vo=new PdfVO();
+      boolean estado = false;
+       PreparedStatement ps = null;
+        try {
+            ps = con.conectado().prepareStatement(insert);
+            ps.setBytes(1, vo.getArchivopdf());
+            System.out.println("getArchivopdf"+vo.getArchivopdf());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                con.desconectar();
+            } catch (Exception ex) {
+            }
+        }
+       return estado;
+   }
+ public boolean eliminar(String datos[], String insert){
+      boolean estado = false;
+       try {
+            ps = con.conectado().prepareStatement(insert);
+            for(int i=0; i<=datos.length-1;i++){
+                ps.setString(i+1, datos[i]);
+            }
+            ps.execute();
+            ps.close();
+            estado = true;
+         }catch(SQLException e){
+         System.out.println(e);
+      }
+       return estado;
+   }
+ 
+ 
      public Object [][] GetTabla(String colName[], String tabla,String tabla2, String sql){
       int registros = 0;
       
@@ -171,6 +210,20 @@ String status = null;
       }
 return status;
 }
+      public String cartar(String tipo) {
+String status = null;
+         try{
+         ps = con.conectado().prepareStatement("SELECT cartar from equipo where serie like '"+tipo+"%';");
+         res = ps.executeQuery();
+         while (res.next()){
+         status = res.getString(1);
+         }res.close();
+      }catch(SQLException e){
+         System.out.println(e);
+      }
+return status;
+}
+     
      public Object[] poblar_combox(String tabla, String nombrecol, String sql){
       int registros = 0;      
       try{

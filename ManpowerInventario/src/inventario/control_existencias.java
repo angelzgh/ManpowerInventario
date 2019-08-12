@@ -4,6 +4,7 @@
  */
 package inventario;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -157,6 +158,10 @@ public class control_existencias
      {
         return sen.poblar_combox(tabla, campo, "select "+campo+" from "+tabla+";");
      }
+     public Object[] comboxu(String tabla, String campo)
+     {
+        return sen.poblar_combox(tabla, campo, "select distinct "+campo+" from "+tabla+" where 1=1;");
+     }
      public Object[] comboxE(String tabla, String campo,String serie)
      {
         return sen.poblar_combox(tabla, campo, "select "+campo+" from "+tabla+" where serie="+serie+";");
@@ -179,6 +184,8 @@ public class control_existencias
          }else{}
                      return status;
                      }
+     
+     
      
              public Object[][] buscadors(String busca)
      {
@@ -276,6 +283,8 @@ public Object[][] buscadorhistoso(String busca)
            String[] columnas={fechas,comentario,remitente,destinatario,idsalida};
         return sen.insertar(columnas, "update garantia set fechas=?,comentarios=?,remitente=?,destinatario=?,idsalida=? where equipo_serie='"+serie+"';");
        }
+     
+      
          public boolean bdg(String id,String serie, String nombre, String noempleado, String correo, String jefe,String udn,String cc,String fechaasig,String hostname,String bitlocker,String soporte, String serieanterior, String fechabaja,String status)
     {               
         
@@ -304,21 +313,7 @@ public Object[][] buscadorhistoso(String busca)
            String[] columnas={fecha};
         return sen.insertar(columnas, "update asignacion set fechaterm=?  where equipo_serie='"+serie+"';");
        }
-        public boolean registrar_producto(String Nnm_factura,String id_articulo,String cantidad, String total)
-        {
-        String[] datos = {Nnm_factura,id_articulo, cantidad,total};
         
-        String[] datosP = {cantidad, id_articulo};
-        if(sen.insertar(datosP, "update articulo set stock=stock-? where id_articulo=?;"))
-        {
-            return sen.insertar(datos, "insert into detalle_factura(cod_factura,cod_articulo,cantidad,total) values(?,?,?,?);");
-        }
-        else
-        {
-            return false;
-        }
-    }
-
     
 
     
