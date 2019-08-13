@@ -215,9 +215,9 @@ String status = null;
          try{
          ps = con.conectado().prepareStatement("SELECT cartar from equipo where serie like '"+tipo+"%';");
          res = ps.executeQuery();
-         while (res.next()){
+         res.next();
          status = res.getString(1);
-         }res.close();
+         res.close();
       }catch(SQLException e){
          System.out.println(e);
       }

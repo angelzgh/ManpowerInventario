@@ -8,6 +8,7 @@ import static javax.swing.Action.NAME;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import inventario.Interfaz_principal;
+import java.awt.Desktop;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
@@ -55,7 +56,8 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
     }
     
     public String mostrar(){
-String p= null;
+
+        String p= null;
         if(this.title.equals("Registro L450")){
         p="PF0E";
         }else if(this.title.equals("Registro X270")){
@@ -65,6 +67,8 @@ String p= null;
 }    
       public void mostrar_tablaasignados(){
           String tipo=mostrar();
+          String status=sen.cartar(tipo);
+          System.out.println("Status:"+status);
           jTable1.setDefaultRenderer(Object.class, new imgTabla());
         DefaultTableModel dt = new DefaultTableModel() {
             @Override
@@ -113,10 +117,10 @@ String p= null;
                 fila[11] = vo.getSoporte();
                 fila[12] = vo.getComentarios();
                 fila[13] = vo.getArchivopdf();
-                if (vo.getArchivopdf() != null) {
-                    fila[13] = new JButton(icono);
-                } else {
+                if (status.equals("Pendiente")) {
                     fila[13] = new JButton("Vacio");
+                } else {
+                    fila[13] = new JButton(icono);
                 }
 
                 dt.addRow(fila);
@@ -230,6 +234,11 @@ String p= null;
 
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Salir");
@@ -552,7 +561,7 @@ seleccionar_pdf();    // TODO add your handling code here:
 
     private void guardararchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardararchActionPerformed
  String nombre = narchivo.getText();
-String serie="PC0SUCC2";
+String serie="PC0SUAA1";
         File ruta = new File(ruta_archivo);
         if (nombre.trim().length() != 0 && ruta_archivo.trim().length() != 0) {
             guardar_pdf(serie, ruta);
@@ -563,6 +572,34 @@ String serie="PC0SUCC2";
             JOptionPane.showMessageDialog(null, "Rellenar todo los campos");
         }        // TODO add your handling code here:
     }//GEN-LAST:event_guardararchActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+     String id = "-1";
+        int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY() / jTable1.getRowHeight();
+        if (row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0) {
+            id = (String) jTable1.getValueAt(row, 0);
+            Object value = jTable1.getValueAt(row, column);
+            if (value instanceof JButton) {
+                ((JButton) value).doClick();
+                JButton boton = (JButton) value;
+
+                if (boton.getText().equals("Vacio")) {
+                    JOptionPane.showMessageDialog(null, "No hay archivo");
+                } else {
+                    PdfDAO pd = new PdfDAO();
+                    pd.ejecutar_archivoPDF("PC0SUCC2");
+                    try {
+                        Desktop.getDesktop().open(new File("new.pdf"));
+                    } catch (Exception ex) {
+                    }
+                }
+
+            } else {
+                String name = "" + jTable1.getValueAt(row, 1);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acartar;

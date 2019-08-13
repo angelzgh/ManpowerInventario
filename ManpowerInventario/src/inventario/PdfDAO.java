@@ -145,14 +145,13 @@ public class PdfDAO {
     }
 
     //Permite mostrar PDF contenido en la base de datos
-    public void ejecutar_archivoPDF(int id) {
+    public void ejecutar_archivoPDF(String id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         byte[] b = null;
 
         try {
-            ps = conec.conectado().prepareStatement("SELECT archivopdf FROM pdf WHERE codigopdf = ?;");
-            ps.setInt(1, id);
+            ps = conec.conectado().prepareStatement("SELECT cartar FROM equipo WHERE serie like '"+id+"';");
             rs = ps.executeQuery();
             while (rs.next()) {
                 b = rs.getBytes(1);

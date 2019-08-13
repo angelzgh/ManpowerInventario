@@ -277,7 +277,7 @@ public Object[][] buscadorhistoso(String busca)
     {               
         
             String[] columnas={id,correo,destinatario,remitente,fechas,serie};
-            return sen.insertar(columnas, "insert into salida values(?,?,?,?,?,?)");
+            return sen.insertar(columnas, "insert into salidaae values(?,?,?,?,?,?)");
     }
          public boolean actualizarsg(String fechas,String comentario,String remitente,String destinatario,String idsalida,String serie){
            String[] columnas={fechas,comentario,remitente,destinatario,idsalida};
