@@ -13,9 +13,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  *
@@ -62,24 +64,66 @@ String p= null;
         return p;
 }    
       public void mostrar_tablaasignados(){
-        
+          String tipo=mostrar();
           jTable1.setDefaultRenderer(Object.class, new imgTabla());
-          ImageIcon icono = null;
-        if (get_Image("/Imagen/32pdf.png") != null) {
-            icono = new ImageIcon(get_Image("/Imagen/32pdf.png"));
+        DefaultTableModel dt = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        dt.addColumn("serie");
+        dt.addColumn("status_idstatus");
+        dt.addColumn("nombre");
+        dt.addColumn("noempleado");
+        dt.addColumn("correo");
+        dt.addColumn("udn_idudn");
+        dt.addColumn("cc_idcc");
+        dt.addColumn("jefe");
+        dt.addColumn("fechaasig");
+        dt.addColumn("hostname");
+        dt.addColumn("bitlocker");
+        dt.addColumn("soporte_idsoporte");
+        dt.addColumn("comentarios");
+        dt.addColumn("cartar");
+        ImageIcon icono = null;
+        if (get_Image("/Imagenes/32pdf.png") != null) {
+            icono = new ImageIcon(get_Image("/imagenes/32pdf.png"));
         }
+
+        dao = new PdfDAO();
         PdfVO vo = new PdfVO();
-        String status=sen.cartar(mostrar());
-        String[] columnas = {"Serie","Status","Nombre","Noempleado","Correo","UDN","CC","Jefe","Fecha","Hostname","Bitlocker","Registrado por","Comentarios","Carta Responsiva"};
-        datostabla = ctre.consulta_equipoasignados(mostrar());
-        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+        ArrayList<PdfVO> list = dao.Listar_PdfVO(tipo);
+
+        if (list.size() > 0) {
+            for (int i = 0; i < list.size(); i++) {
                 Object fila[] = new Object[14];
-                if (status != "Pendiente") {
+                vo = list.get(i);
+                fila[0] = vo.getSerie();
+                fila[1] = vo.getStatus();
+                fila[2] = vo.getNombre();
+                fila[3] = vo.getNoempleado();
+                fila[4] = vo.getCorreo();
+                fila[5] = vo.getUdn();
+                fila[6] = vo.getCc();
+                fila[7] = vo.getJefe();
+                fila[8] = vo.getFecha();
+                fila[9] = vo.getHostname();
+                fila[10] = vo.getBitlocker();
+                fila[11] = vo.getSoporte();
+                fila[12] = vo.getComentarios();
+                fila[13] = vo.getArchivopdf();
+                if (vo.getArchivopdf() != null) {
                     fila[13] = new JButton(icono);
                 } else {
-                    System.out.println("sin archivo");
+                    fila[13] = new JButton("Vacio");
                 }
-                jTable1.setModel(datos);
+
+                dt.addRow(fila);
+            }
+            jTable1.setModel(dt);
+            jTable1.setRowHeight(32);
+        }
     }
        
     public void mostrar_tablahistorial(){

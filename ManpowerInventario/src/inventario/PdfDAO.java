@@ -17,7 +17,7 @@ public class PdfDAO {
 
  public ArrayList<PdfVO> Listar_PdfVO(String tipoe) {
         ArrayList<PdfVO> list = new ArrayList<PdfVO>();
-        String sql = "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+tipoe+"%' and a.fechaterm='0' order by a.fechaasig;";
+        String sql = "select e.serie,e.status_idstatus,a.nombre,a.noempleado,a.correo,a.udn_idudn,a.cc_idcc,a.jefe,a.fechaasig,a.hostname,a.soporte_idsoporte,a.bitlocker,e.comentarios,e.cartar from equipo e, asignacion a where e.serie=a.equipo_serie and a.equipo_serie like '"+tipoe+"%' and a.fechaterm='0' order by a.fechaasig;";
         ResultSet rs = null;
         PreparedStatement ps = null;
         try {
@@ -26,17 +26,19 @@ public class PdfDAO {
             while (rs.next()) {
                 PdfVO vo = new PdfVO();
                 vo.setSerie(rs.getString(1));
-                vo.setStatus(rs.getString(1));
-                vo.setSerie(rs.getString(1));
-                vo.setSerie(rs.getString(1));
-                vo.setSerie(rs.getString(1));
-                vo.setSerie(rs.getString(1));
-                vo.setSerie(rs.getString(1));
-                vo.setSerie(rs.getString(1));
-                vo.setSerie(rs.getString(1));
-                vo.setSerie(rs.getString(1));
-                vo.setNombre(rs.getString(2));
-                vo.setArchivopdf(rs.getBytes(3));
+                vo.setStatus(rs.getString(2));
+                vo.setNombre(rs.getString(3));
+                vo.setNoempleado(rs.getString(4));
+                vo.setCorreo(rs.getString(5));
+                vo.setUdn(rs.getString(6));
+                vo.setCc(rs.getString(7));
+                vo.setJefe(rs.getString(8));
+                vo.setFecha(rs.getDate(9));
+                vo.setHostname(rs.getString(10));
+                vo.setBitlocker(rs.getString(11));
+                vo.setSoporte(rs.getString(12));
+                vo.setComentarios(rs.getString(13));
+                vo.setArchivopdf(rs.getBytes(14));
                 list.add(vo);
             }
         } catch (SQLException ex) {
