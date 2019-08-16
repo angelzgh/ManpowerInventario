@@ -208,6 +208,7 @@ String status = null;
       }catch(SQLException e){
          System.out.println(e);
       }
+         System.out.println("BDG::"+status);
 return status;
 }
       public String cartar(String tipo) {
@@ -221,6 +222,7 @@ String status = null;
       }catch(SQLException e){
          System.out.println(e);
       }
+         System.out.println("Statusdesentencias:"+status);
 return status;
 }
      

@@ -182,9 +182,19 @@ public class control_existencias
              status="4";
              }
          }else{}
+         System.out.println("BDG"+status);  
                      return status;
                      }
-     
+        public String statuscarta(String tipo){
+         String status = null;
+         String tabla;
+             tabla=sen.cartar(tipo);
+             if (tabla.equals("Pendiente")){
+             status="Pendiente";
+             }
+             System.out.println("Status:"+status);
+                     return status;
+                     }
      
      
              public Object[][] buscadors(String busca)

@@ -67,7 +67,7 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
 }    
       public void mostrar_tablaasignados(){
           String tipo=mostrar();
-          String status=sen.cartar(tipo);
+          String status=ctr.statuscarta(tipo);
           System.out.println("Status:"+status);
           jTable1.setDefaultRenderer(Object.class, new imgTabla());
         DefaultTableModel dt = new DefaultTableModel() {
@@ -117,11 +117,11 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
                 fila[11] = vo.getSoporte();
                 fila[12] = vo.getComentarios();
                 fila[13] = vo.getArchivopdf();
-                if (status.equals("Pendiente")) {
-                    fila[13] = new JButton("Vacio");
-                } else {
+               // if (status.equals("Pendiente")) {
+                 //   fila[13] = new JButton("Vacio");
+                //} else {
                     fila[13] = new JButton(icono);
-                }
+                //}
 
                 dt.addRow(fila);
             }
