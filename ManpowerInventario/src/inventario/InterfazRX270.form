@@ -53,19 +53,20 @@
                           <Group type="102" attributes="0">
                               <Component id="acartar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="narchivo" min="-2" pref="191" max="-2" attributes="0"/>
+                              <Component id="narchivo" min="-2" pref="170" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="guardararch" min="-2" max="-2" attributes="0"/>
+                              <Component id="nserie" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="guardararch" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButton1" min="-2" pref="81" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -83,7 +84,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="414" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="418" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="asignados" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -106,12 +107,11 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="acartar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="narchivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="guardararch" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="acartar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="narchivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nserie" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="guardararch" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -269,6 +269,15 @@
         <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="Nombre del archivo"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nserie">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero de Serie"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nserieActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

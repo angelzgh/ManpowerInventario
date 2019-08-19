@@ -217,6 +217,7 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
         acartar = new javax.swing.JButton();
         guardararch = new javax.swing.JButton();
         narchivo = new javax.swing.JTextField();
+        nserie = new javax.swing.JTextField();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -334,6 +335,14 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
         narchivo.setEditable(false);
         narchivo.setText("Nombre del archivo");
 
+        nserie.setEditable(false);
+        nserie.setText("Número de Serie");
+        nserie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nserieActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -364,16 +373,17 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(acartar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(narchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(narchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(guardararch)))
+                                .addComponent(nserie, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton3)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(guardararch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -384,7 +394,7 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(asignados)
@@ -404,10 +414,10 @@ public class InterfazRX270 extends javax.swing.JInternalFrame {
                             .addComponent(filtrohis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(acartar)
-                                .addComponent(narchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(acartar)
+                            .addComponent(narchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nserie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(guardararch))))
                 .addContainerGap())
         );
@@ -556,12 +566,17 @@ String itemSeleecionado;
     }//GEN-LAST:event_filtrohisActionPerformed
 
     private void acartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acartarActionPerformed
-seleccionar_pdf();    // TODO add your handling code here:
+seleccionar_pdf();
+nserie.setText(mostrar());
+nserie.setEditable(true);// TODO add your handling code here:
     }//GEN-LAST:event_acartarActionPerformed
 
     private void guardararchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardararchActionPerformed
  String nombre = narchivo.getText();
-String serie="PC0SUAA1";
+        System.out.println("nombre:"+nombre);
+String serie=nserie.getText();
+String status="Asignado";
+        if(ctr.existe_equipoX270c("'"+serie+"'","'"+status+"'")){
         File ruta = new File(ruta_archivo);
         if (nombre.trim().length() != 0 && ruta_archivo.trim().length() != 0) {
             guardar_pdf(serie, ruta);
@@ -570,11 +585,11 @@ String serie="PC0SUAA1";
             narchivo.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Rellenar todo los campos");
-        }        // TODO add your handling code here:
+        }}else{JOptionPane.showMessageDialog(null, "La serie no existe o el equipo no se encuentra asigando");}        // TODO add your handling code here:
     }//GEN-LAST:event_guardararchActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-     String id = "-1";
+     String id;
         int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY() / jTable1.getRowHeight();
         if (row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0) {
@@ -601,6 +616,10 @@ String serie="PC0SUAA1";
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void nserieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nserieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nserieActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acartar;
     private javax.swing.JButton asignados;
@@ -618,5 +637,6 @@ String serie="PC0SUAA1";
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField narchivo;
+    private javax.swing.JTextField nserie;
     // End of variables declaration//GEN-END:variables
 }

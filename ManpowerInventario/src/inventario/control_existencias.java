@@ -34,7 +34,14 @@ public class control_existencias
          
         this.Documento = cod;
       
-        return sen.existencias(cod," from Equipo where serie like '"+"PC0SU"+"%' and serie like "+cod+" ;");
+        return sen.existencias(cod," from Equipo where serie like '"+"PC0SU"+"%' and serie like "+cod+" and status_idstatus='Asignado' ;");
+      
+    } public boolean existe_equipoX270c( String cod,String status)
+     {
+         
+        this.Documento = cod;
+      
+        return sen.existencias(cod," from Equipo where serie like '"+"PC0SU"+"%' and serie like "+cod+" and status_idstatus like "+status+" ;");
       
     }
    public boolean existe_equipo( String cod)

@@ -63,7 +63,7 @@ public class PdfDAO {
         try {
             ps = conec.conectado().prepareStatement(sql);
             ps.setBytes(1, vo.getArchivopdf());
-            System.out.println("getArchivopdf"+vo.getArchivopdf());
+            System.out.println("getArchivopdf:"+vo.getArchivopdf());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
