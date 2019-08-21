@@ -603,7 +603,7 @@ String status="Asignado";
                     JOptionPane.showMessageDialog(null, "No hay archivo");
                 } else {
                     PdfDAO pd = new PdfDAO();
-                    pd.ejecutar_archivoPDF("PC0SUCC2");
+                    pd.ejecutar_archivoPDF(id);
                     try {
                         Desktop.getDesktop().open(new File("new.pdf"));
                     } catch (Exception ex) {
